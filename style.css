@@ -25,6 +25,9 @@
 
   --error: #e52163;
   --error-tr: #e5216360;
+
+  --color-test-01: #00ff80;
+  --color-test-02: #2fd867;
 }
 
 body {
@@ -198,7 +201,7 @@ div.content {
   width: 50%;
 }
 
-.content .menu .sideinfo>div.docs {
+.content .menu .sideinfo>div.tools {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -207,17 +210,17 @@ div.content {
   padding: 80px 50px;
 }
 
-.content .menu .sideinfo>div.docs h1 {
+.content .menu .sideinfo>div.tools h1 {
   font-size: 50px;
   margin: 0px;
 }
 
-.content .menu .sideinfo>div.docs p {
+.content .menu .sideinfo>div.tools p {
   font-size: 27px;
   margin: 10px 0px;
 }
 
-.content .menu .sideinfo>div.docs button {
+.content .menu .sideinfo>div.tools button {
   padding: 15px 25px;
   background-color: var(--blue);
   border-radius: 5px;
@@ -229,6 +232,9 @@ div.content {
 
 .content .menu .sideinfo>div.news {
   padding: 80px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .content .menu .sideinfo>div.news form {
@@ -443,4 +449,173 @@ object {
 
 #floatingElement.fifth {
   top: 300px;
+}
+
+div.cards {
+  display: grid;
+  --grid-layout-gap: 20px;
+  --grid-column-count: 10;
+  --grid-item--min-width: 240px;
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+  grid-gap: var(--grid-layout-gap);
+}
+
+.card {
+  width: 100%;
+  border-radius: 20px;
+  background: var(--blue);
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card .top-section {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.card img {
+  position: absolute;
+  top: 0px;
+  min-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.card .top-section .border {
+  border-bottom-right-radius: 10px;
+  height: 30px;
+  width: 130px;
+  background: white;
+  background: var(--blue);
+  position: relative;
+  transform: skew(-40deg);
+  box-shadow: -10px -10px 0 0 var(--blue);
+}
+
+.card .top-section .border::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: -15px;
+  background: rgba(255, 255, 255, 0);
+  border-top-left-radius: 10px;
+  box-shadow: -5px -5px 0 2px var(--blue);
+}
+
+.card .top-section::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  height: 15px;
+  width: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: -5px -5px 0 2px var(--blue);
+}
+
+.card .top-section .icons {
+  position: absolute;
+  top: 0;
+  width: calc(100% - 20px);
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.card .top-section .icons .new p {
+  margin: 0px;
+  margin-bottom: 5px;
+  color: var(--blue);
+  background-color: gold;
+  font-size: 15px;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.card .top-section .icons .logo .top-section {
+  height: 100%;
+}
+
+.card .top-section .icons .social-media {
+  height: 20px;
+  padding: 0px 0px;
+  display: flex;
+  gap: 7px;
+}
+
+.card .top-section .icons .social-media .svg {
+  height: 100%;
+  fill: var(--blue);
+}
+
+.card .top-section .icons .social-media .svg.disabled {
+  visibility: hidden;
+  position: absolute;
+}
+
+.card .top-section .icons .social-media .svg:not(.disabled):hover {
+  fill: white;
+}
+
+.card .bottom-section {
+  margin-top: 15px;
+  padding: 10px 5px;
+}
+
+.card .bottom-section .title {
+  display: block;
+  font-size: 17px;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.card .bottom-section .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.card .bottom-section .row .item {
+  flex: 30%;
+  text-align: center;
+  padding: 5px;
+  color: var(--background);
+}
+
+.card .bottom-section .row .item .big-text {
+  font-size: 12px;
+  display: block;
+}
+
+.card .bottom-section .row .item .regular-text {
+  font-size: 9px;
+}
+
+.card .bottom-section .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.126);
 }

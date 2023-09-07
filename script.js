@@ -1,15 +1,15 @@
-window.onload = () => {
+window.onload = async () => {
 
   const sideMenu = {
     home: document.getElementById("homeItem"),
-    docs: document.getElementById("docsItem"),
+    tools: document.getElementById("toolsItem"),
     news: document.getElementById("newsItem"),
     terms: document.getElementById("termsItem"),
     policy: document.getElementById("policyItem")
   }
   const sideMenuArray = [
     document.getElementById("homeItem"),
-    document.getElementById("docsItem"),
+    document.getElementById("toolsItem"),
     document.getElementById("newsItem"),
     document.getElementById("termsItem"),
     document.getElementById("policyItem")
@@ -172,9 +172,32 @@ window.onload = () => {
       }
     }
   }, 100)
+
+  const newsJSON = await requireJSON("./news.json")
+  newsJSON.forEach(article => {
+    new card()
+      .setTitle(article.title)
+      .setDate(article.time)
+      .setOnClik(article.links.click)
+      .setVersion(article.version)
+      .setColor(article.colors[0], article.colors[1])
+      .setLabel(article.label)
+      .setImage(article.image)
+      .setLink("ig", article.links.instagram)
+      .setLink("twt", article.links.twitter)
+      .setLink("gg", article.links.discord)
+      .build()
+  })
 }
 
 function validateEmail(mail) {
   const eMailRegEx = /[A-Za-z0-9._%+-]+@[A-Za-z0-9]+\.[A-Za-z]{2,}/g
   return eMailRegEx.test(mail)
+}
+
+async function requireJSON(url, canonical) {
+  var response = await fetch(`${canonical ? `${document.querySelector("link[rel='canonical']").getAttribute("href")}${url}` : `${url}`}`);
+  if (window.location.href.startsWith("http://127.0.0.1:8080/")) response = await fetch(`${canonical ? `http://127.0.0.1:8080/${url}` : `${url}`}`);
+  const json = await response.json();
+  return json
 }

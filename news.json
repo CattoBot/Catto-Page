@@ -1,0 +1,32 @@
+[
+    {
+        "id": "la-revolucion",
+        "title": "La revolución",
+        "time": "1687801800",
+        "version": "2.0.7",
+        "label": "v2",
+        "links": {
+            "click": "./article#id=la-revolucion"
+        },
+        "colors": [
+            "#ddda",
+            "#bbba"
+        ],
+        "image": "revolution"
+    },
+    {
+        "id": "notas-mod",
+        "title": "Notas",
+        "time": "1682256300",
+        "version": "1.9.8",
+        "label": "v1",
+        "links": {
+            "click": "./article#id=notas-mod"
+        },
+        "colors": [
+            "#5b5f5f",
+            "#393e3d"
+        ],
+        "image": ""
+    }
+]
