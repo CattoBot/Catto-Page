@@ -129,11 +129,13 @@ class embed {
       })
       if (this.fields.length < 25) {
         fieldsInnerHTML += '<div class="buttons"><button title="Nuevo campo" class="add" id="addField"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.03 5-.018 14"></path><path d="M5 12h14"></path></svg><p>Nuevo campo</p></button></div>'
+        document.getElementById("fields").innerHTML = fieldsInnerHTML
+        document.getElementById("addField").addEventListener("click", function() {
+          Embed.addField({name: "", value: "", inline: false}).build()
+        })
+      } else {
+        document.getElementById("fields").innerHTML = fieldsInnerHTML
       }
-      document.getElementById("fields").innerHTML = fieldsInnerHTML
-      document.getElementById("addField").addEventListener("click", function() {
-        Embed.addField({name: "", value: "", inline: false}).build()
-      })
       document.querySelectorAll(".dfield").forEach(element => {
         element.addEventListener("click", function() {
           let fields = Embed.fields
