@@ -48,8 +48,8 @@
       <div class="embedContent">
         <div class="principal">
           <div class="text">
-            <span class="textarea title" contenteditable="true" id="titleInput">Título</span>
-            <span class="textarea description" contenteditable="true" id="descriptionInput">Descripción</span>
+            <span class="textarea title" contenteditable="true" id="titleInput"></span>
+            <span class="textarea description" contenteditable="true" id="descriptionInput"></span>
           </div>
           <div class="thumbnail">
             <label title="Añadir imagen" class="add thumbnail vertical">
@@ -61,32 +61,7 @@
             </label>
           </div>
         </div>
-        <div class="fields">
-          <div class="fieldrow">
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
-          </div>
-          <div class="buttons">
-            <button title="Nuevo campo" class="add">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="m12.03 5-.018 14"></path>
-                <path d="M5 12h14"></path>
-              </svg>
-              <p>Nuevo campo</p>
-            </button>
-          </div>
-        </div>
+        <div class="fields" id="fields"></div>
         <div class="image">
           <button title="Añadir imagen" class="add">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +82,7 @@
           </div>
           <p>•</p>
           <div class="text">
-            <span class="textarea text" contenteditable="true" id="footerInput">Pié de embed</span>
+            <span class="textarea text" contenteditable="true" id="footerInput"></span>
           </div>
         </div>
       </div>
@@ -122,15 +97,19 @@
         </div>
         <div class="buttons">
           <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
+              </path>
               <path d="M16 3v9H7.5V3H16Z"></path>
               <path d="M13 6.5v2"></path>
               <path d="M5.498 3H18"></path>
             </svg>
           </div>
           <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5 5v17h15V5h-15Z"></path>
               <path d="M10 10v6.5"></path>
               <path d="M14 10v6.5"></path>
@@ -139,9 +118,14 @@
             </svg>
           </div>
           <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336"></path>
-              <path d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
+              </path>
+              <path
+                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
+              </path>
             </svg>
           </div>
         </div>
@@ -155,15 +139,19 @@
         </div>
         <div class="buttons">
           <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
+              </path>
               <path d="M16 3v9H7.5V3H16Z"></path>
               <path d="M13 6.5v2"></path>
               <path d="M5.498 3H18"></path>
             </svg>
           </div>
           <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5 5v17h15V5h-15Z"></path>
               <path d="M10 10v6.5"></path>
               <path d="M14 10v6.5"></path>
@@ -172,9 +160,14 @@
             </svg>
           </div>
           <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336"></path>
-              <path d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
+              </path>
+              <path
+                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
+              </path>
             </svg>
           </div>
         </div>
@@ -188,15 +181,19 @@
         </div>
         <div class="buttons">
           <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
+              </path>
               <path d="M16 3v9H7.5V3H16Z"></path>
               <path d="M13 6.5v2"></path>
               <path d="M5.498 3H18"></path>
             </svg>
           </div>
           <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5 5v17h15V5h-15Z"></path>
               <path d="M10 10v6.5"></path>
               <path d="M14 10v6.5"></path>
@@ -205,9 +202,14 @@
             </svg>
           </div>
           <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336"></path>
-              <path d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
+              </path>
+              <path
+                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
+              </path>
             </svg>
           </div>
         </div>
@@ -221,15 +223,19 @@
         </div>
         <div class="buttons">
           <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
+              </path>
               <path d="M16 3v9H7.5V3H16Z"></path>
               <path d="M13 6.5v2"></path>
               <path d="M5.498 3H18"></path>
             </svg>
           </div>
           <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5 5v17h15V5h-15Z"></path>
               <path d="M10 10v6.5"></path>
               <path d="M14 10v6.5"></path>
@@ -238,9 +244,14 @@
             </svg>
           </div>
           <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336"></path>
-              <path d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
+              </path>
+              <path
+                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
+              </path>
             </svg>
           </div>
         </div>
@@ -266,8 +277,11 @@
       <div class="grid">
         <div class="page active">
           <div class="icon">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z">
+              </path>
               <path d="M2 8.667h20"></path>
               <path d="M8.667 22V8.667"></path>
             </svg>
@@ -282,13 +296,15 @@
           </div>
           <div class="buttons">
             <button title="Mover antes" class="blue disabled">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.9 12h18"></path>
                 <path d="m8.9 18-6-6 6-6"></path>
               </svg>
             </button>
             <button title="Eliminar" class="red disabled">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.5 5v17h15V5h-15Z"></path>
                 <path d="M10 10v6.5"></path>
                 <path d="M14 10v6.5"></path>
@@ -297,7 +313,8 @@
               </svg>
             </button>
             <button title="Mover después" class="blue">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 12H3"></path>
                 <path d="m15 6 6 6-6 6"></path>
               </svg>
@@ -306,8 +323,11 @@
         </div>
         <div class="page">
           <div class="icon">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z"></path>
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z">
+              </path>
               <path d="M2 8.667h20"></path>
               <path d="M8.667 22V8.667"></path>
             </svg>
@@ -322,13 +342,15 @@
           </div>
           <div class="buttons">
             <button title="Mover antes" class="blue">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.9 12h18"></path>
                 <path d="m8.9 18-6-6 6-6"></path>
               </svg>
             </button>
             <button title="Eliminar" class="red">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.5 5v17h15V5h-15Z"></path>
                 <path d="M10 10v6.5"></path>
                 <path d="M14 10v6.5"></path>
@@ -337,7 +359,8 @@
               </svg>
             </button>
             <button title="Mover después" class="blue disabled">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 12H3"></path>
                 <path d="m15 6 6 6-6 6"></path>
               </svg>
@@ -352,23 +375,46 @@
           <p>Nueva página</p>
         </div>
       </div>
+      <!-- PRÓXIMAMENTE
+      <div class="settings">
+        <div class="vars">
+          <p>Variables</p>
+          <div class="header">
+            <div class="name">Nombre</div>
+            <span></span>
+            <div class="value">Valor</div>
+          </div>
+          <div class="variables">
+            <div class="variable">
+              <span class="textarea name" contenteditable=""></span>
+              <hr>
+              <span class="textarea value" contenteditable=""></span>
+              <div class="delete" title="eliminar">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 5v17h15V5h-15Z"></path>
+                  <path d="M10 10v6.5"></path>
+                  <path d="M14 10v6.5"></path>
+                  <path d="M2 5h20"></path>
+                  <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
+                </svg>
+                <p>Eliminar</p>
+              </div>
+            </div>
+            <button class="add" title="Nueva variable">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m12.03 5-.018 14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+              <p>Nueva variable</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    -->
     </div>
     <div class="code tool" id="code">
-      <textarea readonly>
-{
-  "title": "",
-  "description": "",
-  "fields": [
-    {
-      "name": "",
-      "value": "",
-      "inline": false
-    }
-  ]
-  "footer": {
-    "text": ""
-  }
-}</textarea>
+      <textarea readonly>{}</textarea>
     </div>
     <div class="new tool" id="new">
 
@@ -429,8 +475,10 @@
         </svg>
       </div>
       <div class="page" title="Desarrolladores" id="goto-credits">
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 8.506c0-.28.227-.506.506-.506h11.988c.28 0 .506.227.506.506V15.5a6.5 6.5 0 0 1-13 0V8.506Z"></path>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 8.506c0-.28.227-.506.506-.506h11.988c.28 0 .506.227.506.506V15.5a6.5 6.5 0 0 1-13 0V8.506Z">
+          </path>
           <path d="M17 11.5H4v4h13v-4Z"></path>
           <path d="M10.5 2v3"></path>
           <path d="M6.5 3v1"></path>

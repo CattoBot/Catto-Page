@@ -17,7 +17,7 @@ function loadEmbedHTML() {
   embedHTML.footer = document.getElementById("footerInput")?document.getElementById("footerInput").innerHTML:undefined
   embedHTML.fields = []
   document.querySelectorAll(".field").forEach(field => {
-    var element = {name: "", value: ""}
+    var element = {name: "", value: "", inline: false}
     field.childNodes.forEach(child => {
       if (!child.classList) return
       if (child.classList.contains("title")) {
@@ -25,6 +25,9 @@ function loadEmbedHTML() {
       }
       if (child.classList.contains("value")) {
         element.value = child.innerHTML
+      }
+      if (child.classList.contains("cfieldLabel")) {
+        element.inline = document.getElementById("cfield-"+child.id.split(/-/g)[1]).checked
       }
     })
     embedHTML.fields.push(element)
@@ -40,6 +43,11 @@ const embedHTML = {
   thumbnail: undefined,
   image: undefined,
   fields: []
+}
+
+function buildFieldHTML(name, value, inline, index) {
+  let fieldBase = '<div class="field" id="field-'+index+'"><button title="Eliminar campo" class="substract dfield" id="dField-'+index+'"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 12h14"></path></svg></button><span class="textarea title" contenteditable="true">'+name+'</span><span class="textarea value" contenteditable="true">'+value+'</span><label class="cfieldLabel" id="cfieldLabel-'+index+'"><input type="checkbox" class="option cfield"'+`${inline?' checked="true"':''}`+' id="cfield-'+index+'"></input><p>Mostrar en línea</p></label></div>'
+  return fieldBase
 }
 
 class embed {
@@ -103,11 +111,41 @@ class embed {
     }
     if (this.fields) {
       var fieldRows = []
-      for (var field=0;field<this.fields.length;field++) {
-        for (var r=0;r<this.fields.length;r++) {
-
+      var row = 0;
+      for (let field=0;field<this.fields.length;field++) {
+        if (!fieldRows[row]) fieldRows[row] = []
+        fieldRows[row].push(this.fields[field])
+        if (fieldRows[row].length > 2 || !this.fields[field].inline || (this.fields[field+1] && !this.fields[field+1].inline)) {
+          row++
         }
       }
+      var fieldsInnerHTML = ""
+      fieldRows.forEach(row => {
+        var innerHTML = ""
+        row.forEach(field => {
+          innerHTML += (buildFieldHTML(field.name, field.value, field.inline, this.fields.indexOf(field)))
+        })
+        fieldsInnerHTML += '<div class="fieldrow">'+innerHTML+'</div>'
+      })
+      if (this.fields.length < 25) {
+        fieldsInnerHTML += '<div class="buttons"><button title="Nuevo campo" class="add" id="addField"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.03 5-.018 14"></path><path d="M5 12h14"></path></svg><p>Nuevo campo</p></button></div>'
+      }
+      document.getElementById("fields").innerHTML = fieldsInnerHTML
+      document.getElementById("addField").addEventListener("click", function() {
+        Embed.addField({name: "", value: "", inline: false}).build()
+      })
+      document.querySelectorAll(".dfield").forEach(element => {
+        element.addEventListener("click", function() {
+          let fields = Embed.fields
+          fields.splice(parseInt(element.id.split(/-/g)[1]), 1);
+          Embed.setFields(fields).build()
+        })
+      })
+      document.querySelectorAll(".cfield").forEach(element => {
+        element.addEventListener("click", function() {
+          Embed.get().build()
+        })
+      })
     }
     if (this.image && document.getElementById("imageInput")) {
       document.getElementById("imageInput").value = this.image

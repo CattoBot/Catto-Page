@@ -80,17 +80,15 @@ window.onload = function () {
     })
   })
 
-  Embed.getFromJSON({
+  Embed.get().getFromJSON({
     title: "Título del embed",
     description: "Descripción del embed",
-    color: generateRandomColor()
+    footer: "Pié del embed",
+    color: generateRandomColor(),
+    fields: []
   }).build()
 
   setInterval(function() {
     Embed.get().updateColor()
   }, 200)
-}
-
-function log() {
-  console.log(Embed)
 }

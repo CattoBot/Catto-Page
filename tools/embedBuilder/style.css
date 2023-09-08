@@ -690,10 +690,101 @@ div.proyect.active > div.buttons > div.copy {
   stroke: #fff;
 }
 
+.pages > hr {
+  width: 80%;
+  align-self: center;
+  opacity: .4;
+}
+
 .pages .settings > div > p {
   color: #fff;
   font-size: 16px;
 }
+
+.pages > .settings > .vars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pages > .settings > .vars > p {
+  width: 100%;
+}
+
+.pages > .settings > .vars .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  gap: 10px;
+}
+
+.pages > .settings > .vars .header > div {
+  padding: 10px 5px;
+}
+
+.pages > .settings > .vars .variables {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.pages > .settings > .vars .variables > button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.pages > .settings > .vars .variable {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.pages > .settings > .vars .variable:hover {
+  border-radius: 5px;
+}
+
+.pages > .settings > .vars div > hr {
+  height: 10px;
+  opacity: .4;
+}
+
+.pages > .settings > .vars .name {
+  width: 150px;
+}
+
+.pages > .settings > .vars .value {
+  width: 100%;
+}
+
+.pages > .settings .delete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0px 10px;
+  gap: 10px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: var(--danger-button);
+}
+
+.pages > .settings .delete > svg {
+  width: 15px;
+  stroke: #fff;
+}
+
+.pages > .settings .delete > p {
+  color: #fff;
+}
+
 
 .custom-select {
   position: relative;
