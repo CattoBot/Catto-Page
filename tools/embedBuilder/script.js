@@ -90,5 +90,6 @@ window.onload = function () {
 
   setInterval(function() {
     Embed.get().updateColor()
-  }, 200)
+    document.getElementById("codeTextarea").innerHTML = JSON.stringify(Embed, undefined, 2)
+  }, 250)
 }
