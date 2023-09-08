@@ -1,3 +1,5 @@
+const Embed = new embed()
+
 window.onload = function () {
   var x, i, j, l, ll, selElmnt, a, b, c;
   x = document.getElementsByClassName("custom-select");
@@ -77,4 +79,18 @@ window.onload = function () {
       page.classList.add("active")
     })
   })
+
+  Embed.getFromJSON({
+    title: "Título del embed",
+    description: "Descripción del embed",
+    color: generateRandomColor()
+  }).build()
+
+  setInterval(function() {
+    Embed.get().updateColor()
+  }, 200)
+}
+
+function log() {
+  console.log(Embed)
 }

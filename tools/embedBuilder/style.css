@@ -108,7 +108,7 @@ div.embed {
   overflow-x: visible;
   overflow-y: visible;
   position: absolute;
-  top: 40px;
+  top: 20px;
   left: 40px;
 }
 
@@ -130,7 +130,7 @@ div.embedContent {
   width: calc(100% - 25px);
   padding: 10px 10px 15px 15px;
   overflow-y: scroll;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 60px);
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;
@@ -397,7 +397,7 @@ div.tool {
 
 div.tool.active {
   position: absolute;
-  top: 40px;
+  top: 20px;
   right: 120px;
   left: calc(5vw + 550px);
   bottom: 15px;
@@ -573,6 +573,12 @@ div.proyect.active > div.buttons > div.copy {
   background-color: var(--message-hover);
   border-radius: 5px;
   box-shadow: 0px 0px 5px #0003;
+  cursor: pointer;
+}
+
+.pages > .grid > .page.active {
+  background-color: #1e1f22;
+  cursor: default;
 }
 
 .pages > .grid > .page > .icon {
@@ -592,6 +598,14 @@ div.proyect.active > div.buttons > div.copy {
   padding: 10px;
 }
 
+.pages > .grid > .page.active > .icon > svg {
+  cursor: pointer;
+}
+
+.pages > .grid > .page:first-child > .icon > svg {
+  background-color: #ff9100;
+}
+
 .pages > .grid > .page > .name {
   display: flex;
   flex-direction: row;
@@ -602,11 +616,8 @@ div.proyect.active > div.buttons > div.copy {
 }
 
 .pages > .grid > .page > .name > p.emoji {
-  cursor: pointer;
-  background-color: #0002;
   height: 35px;
   width: 35px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -614,14 +625,26 @@ div.proyect.active > div.buttons > div.copy {
   font-size: 20px;
 }
 
+.pages > .grid > .page.active > .name > p.emoji {
+  cursor: pointer;
+  background-color: #0003;
+  border-radius: 5px;
+  display: flex;
+}
+
 .pages > .grid > .page > .name > p.id {
-  background-color: #0002;
   width: 130px;
   max-height: 50px;
   padding: 3px 5px;
+  overflow-y: hidden;
+  outline: none;
+}
+
+.pages > .grid > .page.active > .name > p.id {
+  background-color: #0003;
   overflow-y: scroll;
   border-radius: 5px;
-  outline: none;
+  cursor: text;
 }
 
 .pages > .grid > .page > .buttons {
@@ -644,6 +667,7 @@ div.proyect.active > div.buttons > div.copy {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .pages > .grid > .page > .buttons > button.blue {
@@ -657,12 +681,18 @@ div.proyect.active > div.buttons > div.copy {
 .pages > .grid > .page > .buttons > button.disabled {
   background-color: var(--secondary-button);
   opacity: .5;
+  cursor: default;
 }
 
 .pages > .grid > .page > .buttons > button > svg {
   height: 15px;
   width: 15px;
   stroke: #fff;
+}
+
+.pages .settings > div > p {
+  color: #fff;
+  font-size: 16px;
 }
 
 .custom-select {
@@ -753,7 +783,7 @@ div.code > textarea {
 
 div.navigation {
   position: absolute;
-  top: 40px;
+  top: 20px;
   right: 40px;
   width: 70px;
   bottom: 15px;

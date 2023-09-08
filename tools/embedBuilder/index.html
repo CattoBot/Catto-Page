@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="./style.css">
 
   <!--  Scripts  -->
+  <script src="./embed.js"></script>
   <script src="./script.js"></script>
-  <script src="./cards.js"></script>
 
   <!--  Título  -->
   <title>Catto Coffee · The best embed builder ever</title>
@@ -42,14 +42,14 @@
   </noscript>
   <div class="content">
     <div class="embed">
-      <label class="lateral">
-        <input title="Editar color" type="color"></input>
+      <label class="lateral" id="colorLine">
+        <input title="Editar color" type="color" id="colorInput"></input>
       </label>
       <div class="embedContent">
         <div class="principal">
           <div class="text">
-            <span class="textarea title" contenteditable="true">Título</span>
-            <span class="textarea description" contenteditable="true">Descripción</span>
+            <span class="textarea title" contenteditable="true" id="titleInput">Título</span>
+            <span class="textarea description" contenteditable="true" id="descriptionInput">Descripción</span>
           </div>
           <div class="thumbnail">
             <label title="Añadir imagen" class="add thumbnail vertical">
@@ -63,75 +63,6 @@
         </div>
         <div class="fields">
           <div class="fieldrow">
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
-          </div>
-          <div class="fieldrow">
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
-          </div>
-          <div class="fieldrow">
-            <div class="field">
-              <button title="Eliminar campo" class="substract">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.25 12h14"></path>
-                </svg>
-              </button>
-              <span class="textarea title" contenteditable="true">Título</span>
-              <span class="textarea value" contenteditable="true">Cuerpo</span>
-              <label>
-                <input type="checkbox" class="option"></input>
-                <p>Mostrar en línea</p>
-              </label>
-            </div>
             <div class="field">
               <button title="Eliminar campo" class="substract">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +107,7 @@
           </div>
           <p>•</p>
           <div class="text">
-            <span class="textarea text" contenteditable="true">Pié de embed</span>
+            <span class="textarea text" contenteditable="true" id="footerInput">Pié de embed</span>
           </div>
         </div>
       </div>
@@ -320,8 +251,20 @@
         <h1>Tipo: Embed simple</h1>
         <p>Un embed simple, sin páginas, sin roles, sin complicaciones.</p>
       </div>
+      <div class="settings">
+        <div>
+          <div class="custom-select" style="width:100%;">
+            <select>
+              <option value="0">Todos en el mismo mensaje.</option>
+              <option value="0">Todos en el mismo mensaje.</option>
+              <option value="1">Portada con lista de páginas.</option>
+              <option value="2">Portada con botones de navegación.</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div class="grid">
-        <div class="page">
+        <div class="page active">
           <div class="icon">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z"></path>
@@ -353,6 +296,46 @@
                 <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
               </svg>
             </button>
+            <button title="Mover después" class="blue">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12H3"></path>
+                <path d="m15 6 6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="page">
+          <div class="icon">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2Z"></path>
+              <path d="M2 8.667h20"></path>
+              <path d="M8.667 22V8.667"></path>
+            </svg>
+          </div>
+          <div class="name">
+            <p class="emoji">
+              📄
+            </p>
+            <p class="id">
+              New page
+            </p>
+          </div>
+          <div class="buttons">
+            <button title="Mover antes" class="blue">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.9 12h18"></path>
+                <path d="m8.9 18-6-6 6-6"></path>
+              </svg>
+            </button>
+            <button title="Eliminar" class="red">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 5v17h15V5h-15Z"></path>
+                <path d="M10 10v6.5"></path>
+                <path d="M14 10v6.5"></path>
+                <path d="M2 5h20"></path>
+                <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
+              </svg>
+            </button>
             <button title="Mover después" class="blue disabled">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21 12H3"></path>
@@ -367,19 +350,6 @@
             <path d="M5 12h14"></path>
           </svg>
           <p>Nueva página</p>
-        </div>
-      </div>
-      <div class="settings">
-        <div>
-          <p>Cómo enviar los embeds</p>
-          <div class="custom-select" style="width:200px;">
-            <select>
-              <option value="0">Todos en el mismo mensaje.</option>
-              <option value="0">Todos en el mismo mensaje.</option>
-              <option value="1">Portada con lista de páginas.</option>
-              <option value="2">Portada con botones de navegación.</option>
-            </select>
-          </div>
         </div>
       </div>
     </div>
