@@ -872,6 +872,130 @@ div.code > textarea {
 
 
 
+div.options {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+div.options > div.section {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: calc(100% - 20px);
+}
+
+.options > .section > div.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.options > .section > div.row > div {
+  display: flex;
+  width: 100%;
+}
+
+.options > .section > .row > div.row {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.options > .section > .row > div.row .custom-select{
+  width: 100%;
+}
+
+.options > .section > .row > div.column .custom-select{
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.options > .section > .row > div.column {
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+
+.options > .section > .row > div > p {
+  margin: 0px;
+  color: #fff;
+  font-size: 15px;
+  width: 100%;
+  max-width: 150px;
+}
+
+.options > .section > .row > div.row > p {
+  width: 70%;
+  max-width: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+div.credits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 40px;
+  color: #fff;
+}
+
+div.credits > h1 , div.credits > h2 {
+  margin: 0px;
+}
+
+div.credits > h1 {
+  font-size: 32px;
+}
+
+div.credits > h2 {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+div.credits > div {
+  display: flex;
+  flex-direction: row;
+  gap: 7.5px;
+}
+
+div.credits > div > a, div.credits > div > a:any-link {
+  font-size: 18px;
+  padding: 5px 10px;
+  background-color: var(--message-hover);
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid #fff0;
+  color: #fff;
+  text-decoration: none;
+}
+
+div.credits > div > a:hover {
+  border: 2px solid #fff5;
+}
+
+
+
+
+
+
+
 div.navigation {
   position: absolute;
   top: 20px;
