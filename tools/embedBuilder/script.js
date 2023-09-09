@@ -5,10 +5,68 @@ window.onload = async function () {
 
   await myIndexedDB.startDB()
   let existsDefaultStart = true
-  const proyectsData = await myIndexedDB.displayData("proyects")
-  const embedsData = await myIndexedDB.displayData("embeds")
-  await sleep(300)
+  var proyectsData = await myIndexedDB.displayData("proyects")
+  var embedsData = await myIndexedDB.displayData("embeds")
+  await sleep(400)
 
+  loadLists()
+
+  var pages = document.querySelectorAll(".navigation > .page")
+  pages.forEach(page => {
+    page.addEventListener("click", function(e) {
+      var pageToOpen = document.getElementById(page.id.split(/-/g)[1])
+      document.querySelector(".tool.active").classList.remove("active")
+      pageToOpen.classList.add("active")
+      document.querySelector(".navigation > .page.active").classList.remove("active")
+      page.classList.add("active")
+    })
+  })
+
+  if (proyectsData.length < 1) {
+    actualProyectID = "New embed"
+    actualEmbedID = "New page"
+    myIndexedDB.addElement("proyects", {
+      id: "New embed",
+      embeds: "New page"
+    })
+    myIndexedDB.addElement("embeds", {
+      json: '{"title":"Título del embed","description":"Descripción del embed","color":"'+generateRandomColor()+'","footer":"Pié del embed","fields":[]}',
+      emoji: "",
+      proyect: "New embed",
+      id: "New page"
+    })
+    var proyectsData = await myIndexedDB.displayData("proyects")
+    var embedsData = await myIndexedDB.displayData("embeds")
+    await sleep(400)
+  } else {
+    actualProyectID = proyectsData[0].id
+    actualEmbedID = proyectsData[0].embeds.split(/,/g)[0]
+  }
+
+  if (embedsData.length > 0) {
+    Embed.getFromJSON(
+      JSON.parse(embedsData.filter(x => x.id == actualEmbedID)[0].json)
+    ).build()
+  } else {
+    if (confirm("Ha surgido un error y es necesario reiniciar la página.\nPresione \"Aceptar\" para recargar la página.")) {
+      window.location.reload()
+    }
+  }
+
+  setInterval(function() {
+    Embed.get().updateColor()
+    myIndexedDB.deleteItem("embeds", actualEmbedID)
+    myIndexedDB.addElement("embeds", {
+      json: JSON.stringify(Embed),
+      emoji: "",
+      proyect: "New embed",
+      id: "New page"
+    })
+    document.getElementById("codeTextarea").innerHTML = JSON.stringify(Embed, undefined, 2)
+  }, 250)
+}
+
+function loadLists() {
   var x, i, j, l, ll, selElmnt, a, b, c;
   x = document.getElementsByClassName("custom-select");
   l = x.length;
@@ -76,55 +134,4 @@ window.onload = async function () {
   }
 
   document.addEventListener("click", closeAllSelect);
-
-  var pages = document.querySelectorAll(".navigation > .page")
-  pages.forEach(page => {
-    page.addEventListener("click", function(e) {
-      var pageToOpen = document.getElementById(page.id.split(/-/g)[1])
-      document.querySelector(".tool.active").classList.remove("active")
-      pageToOpen.classList.add("active")
-      document.querySelector(".navigation > .page.active").classList.remove("active")
-      page.classList.add("active")
-    })
-  })
-
-  if (proyectsData.length < 1) {
-    actualProyectID = "New embed"
-    actualEmbedID = "New page"
-    myIndexedDB.addElement("proyects", {
-      id: "New embed",
-      embeds: "New page"
-    })
-    myIndexedDB.addElement("embeds", {
-      json: '{title:"Título del embed",description:"Descripción del embed",color:"'+generateRandomColor()+'",footer:"Pié del embed",fields:[]}',
-      emoji: "",
-      proyect: "New embed",
-      id: "New page"
-    })
-  } else {
-    actualProyectID = proyectsData[0].id
-    actualEmbedID = proyectsData[0].embeds.split(/,/g)[0]
-  }
-
-  if (embedsData.length > 0) {
-    Embed.getFromJSON(
-      JSON.parse(embedsData.filter(x => x.id == actualEmbedID)[0].json)
-    ).build()
-  } else {
-    if (confirm("Ha surgido un error y es necesario reiniciar la página.\nPresione \"Aceptar\" para recargar la página.")) {
-      window.location.reload()
-    }
-  }
-
-  setInterval(function() {
-    Embed.get().updateColor()
-    myIndexedDB.deleteItem("embeds", actualEmbedID)
-    myIndexedDB.addElement("embeds", {
-      json: JSON.stringify(Embed),
-      emoji: "",
-      proyect: "New embed",
-      id: "New page"
-    })
-    document.getElementById("codeTextarea").innerHTML = JSON.stringify(Embed, undefined, 2)
-  }, 250)
 }

@@ -152,19 +152,21 @@ class embed {
           Embed.get().build()
         })
       })
-
-      var ce = document.querySelector('[contenteditable]')
-      ce.addEventListener('paste', function (e) {
-        e.preventDefault()
-        var text = e.clipboardData.getData('text/plain')
-        document.execCommand('insertText', false, text)
-      })
     }
-    if (this.image && document.getElementById("imageInput")) {
-      document.getElementById("imageInput").value = this.image
+    var ce = document.querySelector('[contenteditable]')
+    ce.addEventListener('paste', function (e) {
+      e.preventDefault()
+      var text = e.clipboardData.getData('text/plain')
+      document.execCommand('insertText', false, text)
+    })
+    if (this.image && document.getElementById("imageImage")) {
+      document.getElementById("imageImage").src = this.image
+      document.getElementById("imageImage").classList.add("active")
     }
-    if (this.thumbnail && document.getElementById("thumbnailInput")) {
-      document.getElementById("thumbnailInput").value = this.thumbnail
+    if (this.thumbnail && document.getElementById("thumbnailImage")) {
+      document.getElementById("thumbnailImage").src = this.thumbnail
+      document.getElementById("thumbnailImage").classList.add("active")
+      
     }
     if (this.timestamp && document.getElementById("timestampInput")) {
       document.getElementById("timestampInput").value = this.timestamp
