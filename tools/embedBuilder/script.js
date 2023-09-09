@@ -1,13 +1,13 @@
 const Embed = new embed()
-var actualProyectID, actualEmbedID
+const Proyect = new proyect()
+var actualProyectID, actualEmbedID, proyectsData, embedsData
 
 window.onload = async function () {
 
   await myIndexedDB.startDB()
-  let existsDefaultStart = true
-  var proyectsData = await myIndexedDB.displayData("proyects")
-  var embedsData = await myIndexedDB.displayData("embeds")
-  await sleep(400)
+  proyectsData = await myIndexedDB.displayData("proyects")
+  embedsData = await myIndexedDB.displayData("embeds")
+  await sleep(1000)
 
   loadLists()
 
@@ -37,7 +37,7 @@ window.onload = async function () {
     })
     var proyectsData = await myIndexedDB.displayData("proyects")
     var embedsData = await myIndexedDB.displayData("embeds")
-    await sleep(400)
+    await sleep(1000)
   } else {
     actualProyectID = proyectsData[0].id
     actualEmbedID = proyectsData[0].embeds.split(/,/g)[0]
@@ -48,22 +48,28 @@ window.onload = async function () {
       JSON.parse(embedsData.filter(x => x.id == actualEmbedID)[0].json)
     ).build()
   } else {
-    if (confirm("Ha surgido un error y es necesario reiniciar la página.\nPresione \"Aceptar\" para recargar la página.")) {
-      window.location.reload()
-    }
+    document.getElementById("loader").classList.add("error")
+    await sleep(100)
+    alert("Algunos datos no se han cargado correctamente y podría repercutir en el funcionamiento de la página.\nRecomendamos recargar la página usando F5 o presionando el correspondiente icono en el navegador.\n\nSi el error persiste, por favor contacte con el desarrollador.")
+    await sleep(500)
   }
+
+  await Proyect.load()
+  await Proyect.build()
 
   setInterval(function() {
     Embed.get().updateColor()
-    myIndexedDB.deleteItem("embeds", actualEmbedID)
+    myIndexedDB.deleteItem("embeds", [actualEmbedID, actualProyectID])
     myIndexedDB.addElement("embeds", {
       json: JSON.stringify(Embed),
       emoji: "",
-      proyect: "New embed",
-      id: "New page"
+      proyect: actualProyectID,
+      id: actualEmbedID
     })
     document.getElementById("codeTextarea").innerHTML = JSON.stringify(Embed, undefined, 2)
   }, 250)
+
+  document.getElementById("loader").classList.add("invisible")
 }
 
 function loadLists() {

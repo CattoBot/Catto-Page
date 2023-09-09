@@ -20,6 +20,7 @@
 
   <!--  Hojas de estilo  -->
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./loader.css">
 
   <!--  Scripts  -->
   <script src="./tools.js"></script>
@@ -41,6 +42,35 @@
       </div>
     </div>
   </noscript>
+  <div id="loader">
+    <p id="loaderText">LOADING<span class="one">.</span><span class="two">.</span><span class="three">.</span></p>
+    <div class="cube">
+      <div class="topD"></div>
+      <div>
+        <span style="--i:0"></span>
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+      </div>
+      <div class="cube2">
+        <div>
+          <span style="--i:0"></span>
+          <span style="--i:1"></span>
+          <span style="--i:2"></span>
+          <span style="--i:3"></span>
+        </div>
+        <div class="cube3">
+          <div class="top3"></div>
+          <div>
+            <span style="--i:0"></span>
+            <span style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span style="--i:3"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="content">
     <div class="embed">
       <label class="lateral" id="colorLine">
@@ -88,176 +118,7 @@
         </div>
       </div>
     </div>
-    <div class="proyects tool active" id="proyects">
-      <div class="proyect active">
-        <div class="icon">
-          <p>N</p>
-        </div>
-        <div class="name">
-          <p contenteditable="">New embed</p>
-        </div>
-        <div class="buttons">
-          <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
-              </path>
-              <path d="M16 3v9H7.5V3H16Z"></path>
-              <path d="M13 6.5v2"></path>
-              <path d="M5.498 3H18"></path>
-            </svg>
-          </div>
-          <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5v17h15V5h-15Z"></path>
-              <path d="M10 10v6.5"></path>
-              <path d="M14 10v6.5"></path>
-              <path d="M2 5h20"></path>
-              <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
-            </svg>
-          </div>
-          <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
-              </path>
-              <path
-                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
-              </path>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="proyect">
-        <div class="icon">
-          <p>I</p>
-        </div>
-        <div class="name">
-          <p>Incredible embed</p>
-        </div>
-        <div class="buttons">
-          <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
-              </path>
-              <path d="M16 3v9H7.5V3H16Z"></path>
-              <path d="M13 6.5v2"></path>
-              <path d="M5.498 3H18"></path>
-            </svg>
-          </div>
-          <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5v17h15V5h-15Z"></path>
-              <path d="M10 10v6.5"></path>
-              <path d="M14 10v6.5"></path>
-              <path d="M2 5h20"></path>
-              <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
-            </svg>
-          </div>
-          <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
-              </path>
-              <path
-                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
-              </path>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="proyect">
-        <div class="icon">
-          <p>E</p>
-        </div>
-        <div class="name">
-          <p>Example embed</p>
-        </div>
-        <div class="buttons">
-          <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
-              </path>
-              <path d="M16 3v9H7.5V3H16Z"></path>
-              <path d="M13 6.5v2"></path>
-              <path d="M5.498 3H18"></path>
-            </svg>
-          </div>
-          <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5v17h15V5h-15Z"></path>
-              <path d="M10 10v6.5"></path>
-              <path d="M14 10v6.5"></path>
-              <path d="M2 5h20"></path>
-              <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
-            </svg>
-          </div>
-          <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
-              </path>
-              <path
-                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
-              </path>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="proyect">
-        <div class="icon">
-          <p>T</p>
-        </div>
-        <div class="name">
-          <p>Test embed</p>
-        </div>
-        <div class="buttons">
-          <div class="save" title="guardar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z">
-              </path>
-              <path d="M16 3v9H7.5V3H16Z"></path>
-              <path d="M13 6.5v2"></path>
-              <path d="M5.498 3H18"></path>
-            </svg>
-          </div>
-          <div class="delete" title="eliminar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 5v17h15V5h-15Z"></path>
-              <path d="M10 10v6.5"></path>
-              <path d="M14 10v6.5"></path>
-              <path d="M2 5h20"></path>
-              <path d="m8 5 1.645-3h4.744L16 5H8Z"></path>
-            </svg>
-          </div>
-          <div class="copy" title="duplicar">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336">
-              </path>
-              <path
-                d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z">
-              </path>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="proyects tool active" id="proyects"></div>
     <div class="pages tool" id="pages">
       <div class="type">
         <h1>Tipo: Embed simple</h1>
@@ -527,7 +388,7 @@
           </path>
         </svg>
       </div>
-      <div class="page" title="Desarrolladores" id="goto-credits">
+      <div class="page" title="Créditos" id="goto-credits">
         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 8.506c0-.28.227-.506.506-.506h11.988c.28 0 .506.227.506.506V15.5a6.5 6.5 0 0 1-13 0V8.506Z">

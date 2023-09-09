@@ -45,6 +45,15 @@ const embedHTML = {
   fields: []
 }
 
+function buildProyectHTML(name) {
+  let saveButton = '<div class="save" title="guardar" id="sButton"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.65 3H4.35A1.35 1.35 0 0 0 3 4.35v15.3c0 .746.604 1.35 1.35 1.35h15.3A1.35 1.35 0 0 0 21 19.65V4.35A1.35 1.35 0 0 0 19.65 3Z"></path><path d="M16 3v9H7.5V3H16Z"></path><path d="M13 6.5v2"></path><path d="M5.498 3H18"></path></svg></div>'
+  let deleteButton = '<div class="delete" title="eliminar" id="dButton"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 5v17h15V5h-15Z"></path><path d="M10 10v6.5"></path><path d="M14 10v6.5"></path><path d="M2 5h20"></path><path d="m8 5 1.645-3h4.744L16 5H8Z"></path></svg></div>'
+  let copyButton = '<div class="copy" title="duplicar" id="cButton"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 6.216v-2.31c0-.776.63-1.406 1.406-1.406h12.188c.776 0 1.406.63 1.406 1.406v12.188c0 .776-.63 1.406-1.406 1.406h-2.336"></path><path d="M16.094 6.5H3.906C3.13 6.5 2.5 7.13 2.5 7.906v12.188c0 .776.63 1.406 1.406 1.406h12.188c.776 0 1.406-.63 1.406-1.406V7.906c0-.776-.63-1.406-1.406-1.406Z"></path></svg></div>'
+  let buttons = '<div class="buttons">' + saveButton + deleteButton + copyButton + '</div>'
+  let proyectBase = '<div class="proyect ' + `${name == actualProyectID ? "active" : ""}` + '"><div class="icon"><p>' + name.charAt(0).toUpperCase() + '</p></div><div class="name"><p ' + `${name == actualProyectID ? 'contenteditable="true"' : ""}` + ' id="editProyectName">' + name + '</p></div>' + `${name == actualProyectID ? buttons : ""}` + '</div>'
+  return proyectBase
+}
+
 function buildFieldHTML(name, value, inline, index) {
   let fieldBase = '<div class="field" id="field-' + index + '"><button title="Eliminar campo" class="substract dfield" id="dField-' + index + '"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 12h14"></path></svg></button><span class="textarea title" contenteditable="true">' + name + '</span><span class="textarea value" contenteditable="true">' + value + '</span><label class="cfieldLabel" id="cfieldLabel-' + index + '"><input type="checkbox" class="option cfield"' + `${inline ? ' checked="true"' : ''}` + ' id="cfield-' + index + '"></input><p>Mostrar en línea</p></label></div>'
   return fieldBase
@@ -153,11 +162,13 @@ class embed {
         })
       })
     }
-    var ce = document.querySelector('[contenteditable]')
-    ce.addEventListener('paste', function (e) {
-      e.preventDefault()
-      var text = e.clipboardData.getData('text/plain')
-      document.execCommand('insertText', false, text)
+    var ce = document.querySelectorAll('.embed [contenteditable]')
+    ce.forEach(cee => {
+      cee.addEventListener('paste', function (e) {
+        e.preventDefault()
+        var text = e.clipboardData.getData('text/plain')
+        document.execCommand('insertText', false, text)
+      })
     })
     if (this.image && document.getElementById("imageImage")) {
       document.getElementById("imageImage").src = this.image
@@ -166,7 +177,7 @@ class embed {
     if (this.thumbnail && document.getElementById("thumbnailImage")) {
       document.getElementById("thumbnailImage").src = this.thumbnail
       document.getElementById("thumbnailImage").classList.add("active")
-      
+
     }
     if (this.timestamp && document.getElementById("timestampInput")) {
       document.getElementById("timestampInput").value = this.timestamp
@@ -200,5 +211,67 @@ class embed {
     JSON.thumbnail ? this.thumbnail = JSON.thumbnail : undefined
     JSON.timestamp ? this.timestamp = JSON.timestamp : undefined
     return this
+  }
+}
+
+class proyect {
+  constructor() { }
+  async load() {
+    return new Promise(async resolve => {
+      proyectsData = await myIndexedDB.displayData("proyects")
+      embedsData = await myIndexedDB.displayData("embeds")
+      await sleep(1000)
+      this.proyects = proyectsData
+      this.embeds = embedsData
+      resolve()
+    })
+  }
+  async build() {
+    return new Promise(async resolve => {
+      var proyects = ''
+      this.proyects.forEach(e => {
+        proyects += buildProyectHTML(e.id)
+      })
+      document.getElementById("proyects").innerHTML = proyects
+      document.getElementById("editProyectName").addEventListener("change", function(){
+        console.log(1)
+      })
+      document.getElementById("sButton").addEventListener("click", async function () {
+        var permited = true
+        let permitedChars = "abcdefghijklmnñopqrstuvwxyzçáàéèíìóòäëïöüâêîôû_- "
+        let newName = document.getElementById("editProyectName").innerHTML
+        for (let i = 0;i<newName.length;i++) {
+          if (!permitedChars.includes(newName.toLowerCase().charAt(i))) permited = false
+        }
+        if (!permited) return
+        if (await myIndexedDB.has("proyects", newName)) return
+        var renamed = Proyect.proyects.filter(x => x.id==actualProyectID)[0]
+        renamed.id = newName
+        myIndexedDB.addElement("proyects", renamed)
+        myIndexedDB.deleteItem("proyects", [actualProyectID])
+        actualProyectID = newName
+      })
+      document.getElementById("dButton").addEventListener("click", function () {
+
+      })
+      document.getElementById("cButton").addEventListener("click", function () {
+        
+      })
+      var ce = document.querySelectorAll('.proyects [contenteditable]')
+      ce.forEach(cee => {
+        cee.addEventListener('paste', function (e) {
+          e.preventDefault()
+          var text = e.clipboardData.getData('text/plain')
+          document.execCommand('insertText', false, text)
+        })
+      })
+      resolve()
+    })
+  }
+  getEmbeds() {
+
+  }
+  buildEmbedsList() {
+
   }
 }

@@ -41,22 +41,31 @@ const myIndexedDB = {
       };
       request.onupgradeneeded = function (e) {
         myIndexedDB.db = e.target.result;
-        myIndexedDB.addsheet("embeds", [
-          { name: "json", unique: false },
-          { name: "emoji", unique: false },
-          { name: "proyect", unique: false }
-        ], false)
-        myIndexedDB.addsheet("proyects", [
-          { name: "embeds", unique: false },
-        ], false)
+        myIndexedDB.addsheet(
+          "embeds",
+          [
+            "id",
+            "proyect"
+          ],
+          [
+            { name: "json", unique: false },
+            { name: "emoji", unique: false }
+          ]
+        )
+        myIndexedDB.addsheet(
+          "proyects",
+          [
+            "id"
+          ],
+          [
+            { name: "embeds", unique: false },
+          ]
+        )
       };
     })
   },
-  addsheet(name, fields, autoincrement) {
-    let objectStore = myIndexedDB.db.createObjectStore(name, {
-      keyPath: "id",
-      autoIncrement: autoincrement,
-    });
+  addsheet(name, key, fields) {
+    let objectStore = myIndexedDB.db.createObjectStore(name, { keyPath: key });
     fields.forEach(field => {
       objectStore.createIndex(field.name, field.name, { unique: field.unique });
     });
@@ -66,7 +75,7 @@ const myIndexedDB = {
     let transaction = myIndexedDB.db.transaction([sheet], "readwrite");
     let objectStore = transaction.objectStore(sheet);
     let request = objectStore.add(element);
-    transaction.onerror = function () { console.error("Transacción fallida"); };
+    transaction.onerror = function () { console.error("Transacción fallida\n"); };
   },
   async displayData(sheet) {
     return new Promise(function (resolve, reject) {
@@ -79,7 +88,7 @@ const myIndexedDB = {
             toShow.push(cursor.value)
             cursor.continue();
           }
-        }; 
+        };
         resolve(toShow)
       } catch (err) {
         reject(err)
