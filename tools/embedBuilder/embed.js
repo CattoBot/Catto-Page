@@ -8,8 +8,8 @@ function generateRandomColor(){
 }
 
 function loadEmbedHTML() {
-  embedHTML.title = document.getElementById("titleInput")?document.getElementById("titleInput").innerHTML:undefined
-  embedHTML.description = document.getElementById("descriptionInput")?document.getElementById("descriptionInput").innerHTML:undefined
+  embedHTML.title = document.getElementById("titleInput")?document.getElementById("titleInput").innerHTML.replace(/\<div\>/g, " ").replace(/\<\/div\>/, "").replace(/\<br\>/, ""):undefined
+  embedHTML.description = document.getElementById("descriptionInput")?document.getElementById("descriptionInput").innerHTML.replace(/\<div\>/g, "\n").replace(/\<\/div\>/, "").replace(/\<br\>/, ""):undefined
   embedHTML.color = document.getElementById("colorInput")?document.getElementById("colorInput").value:undefined
   embedHTML.timestamp = document.getElementById("timestampInput")?document.getElementById("timestampInput").value:undefined
   embedHTML.thumbnail = document.getElementById("thumbnailInput")?document.getElementById("thumbnailInput").value:undefined
@@ -21,10 +21,10 @@ function loadEmbedHTML() {
     field.childNodes.forEach(child => {
       if (!child.classList) return
       if (child.classList.contains("title")) {
-        element.name = child.innerHTML
+        element.name = child.innerHTML.replace(/\<div\>/g, " ").replace(/\<\/div\>/, "").replace(/\<br\>/, "")
       }
       if (child.classList.contains("value")) {
-        element.value = child.innerHTML
+        element.value = child.innerHTML.replace(/\<div\>/g, "\n").replace(/\<\/div\>/, "").replace(/\<br\>/, "")
       }
       if (child.classList.contains("cfieldLabel")) {
         element.inline = document.getElementById("cfield-"+child.id.split(/-/g)[1]).checked
