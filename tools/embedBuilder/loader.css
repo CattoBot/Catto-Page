@@ -4,7 +4,7 @@
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 999;
+  z-index: 990;
   background-color: #313338;
   display: flex;
   flex-direction: column;
@@ -216,4 +216,43 @@
   background: var(--color);
   transform: rotateX(90deg) translateZ(14px);
   box-shadow: 0px 0px 10px var(--color);
+}
+
+#loadericonarea:not(.active) {
+  position: fixed;
+  z-index: -1;
+  height: 0px;
+  width: 0px;
+}
+
+#loadericonarea.active {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 999;
+  cursor: wait;
+  background-color: #0007;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#loadericonarea:not(.active) > p {
+  color: #fff0;
+  font-size: 1px;
+}
+
+#loadericonarea.active > p {
+  color: #fff;
+  font-size: 18px;
+}
+
+#loadericonarea.active > p.error {
+  color: #ed4245;
+  font-weight: bold;
+  text-transform: uppercase;
 }

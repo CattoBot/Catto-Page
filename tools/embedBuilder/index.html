@@ -23,8 +23,17 @@
   <link rel="stylesheet" href="./loader.css">
 
   <!--  Scripts  -->
-  <script src="./tools.js"></script>
-  <script src="./embed.js"></script>
+  <script src="./scripts/tools/datamg.js"></script>
+  <script src="./scripts/tools/indexedDB.js"></script>
+  <script src="./scripts/tools/loader.js"></script>
+  <script src="./scripts/tools/randomColor.js"></script>
+  <script src="./scripts/tools/require.js"></script>
+  <script src="./scripts/tools/sleep.js"></script>
+  <script src="./scripts/embeds.js"></script>
+  <script src="./scripts/proyects.js"></script>
+  <script src="./scripts/lists.js"></script>
+  <script src="./scripts/autosave.js"></script>
+  <script src="./scripts/navigation.js"></script>
   <script src="./script.js"></script>
 
   <!--  Título  -->
@@ -36,9 +45,9 @@
   <noscript>
     <div class="noscriptDiv">
       <div>
-        <h1>¡OH NO!</h1>
-        <h2>Tu navegador no permite el uso de scripts.</h2>
-        <p>Si deseas acceder a la página de Catto, habilita el uso de scripts en tu navegador.</p>
+        <h1>OH NO!</h1>
+        <h2>Your browser does not allow the use of scripts.</h2>
+        <p>If you want to access the Catto page, enable the use of scripts in your browser.</p>
       </div>
     </div>
   </noscript>
@@ -70,6 +79,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="loadericonarea">
+    <p id="loadingText"></p>
   </div>
   <div class="content">
     <div class="embed">
@@ -121,8 +133,8 @@
     <div class="proyects tool active" id="proyects"></div>
     <div class="pages tool" id="pages">
       <div class="type">
-        <h1>Tipo: Embed simple</h1>
-        <p>Un embed simple, sin páginas, sin roles, sin complicaciones.</p>
+        <h1 id="proyectTypeText"></h1>
+        <p id="proyectDescriptionText"></p>
       </div>
       <div class="settings">
         <div>
