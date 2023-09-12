@@ -37,14 +37,17 @@ function buildPageHTML(name, emoji) {
 }
 
 async function setActualProyect(id) {
-  loader.enable("Loading...")
-  actualProyectID = id
-  await Proyect.load()
-  await Proyect.build()
-  actualEmbedID = proyectsData.filter(y => y.id == id)[0].embeds.split(/\,/g)[0]
-  embedJSON = embedsData.filter(x => x.id == actualEmbedID && x.proyect == actualProyectID)[0]
-  Embed.getFromJSON(JSON.parse(embedJSON.json)).build()
-  loader.disable()
+  return new Promise(async (resolve, reject) => {
+    loader.enable("Loading...")
+    actualProyectID = id
+    await Proyect.build()
+    await sleep(500)
+    let proyect = proyectsData.filter(y => y.id == id)[0]
+    actualEmbedID = proyect.embeds.split(/\,/g)[0]
+    let embedJSON = embedsData.filter(x => x.id == actualEmbedID && x.proyect == actualProyectID)[0]
+    Embed.getFromJSON(JSON.parse(embedJSON.json)).build()
+    loader.disable()
+  })
 }
 
 class proyect {
