@@ -1,0 +1,89 @@
+div.console {
+    position: fixed;
+    right: 20px;
+    bottom: 0px;
+    z-index: 800;
+}
+
+div.console.hidden {
+    visibility: hidden;
+}
+
+div.console > .header {
+    height: 30px;
+    background-color: #000;
+    width: 500px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    padding: 0px 20px;
+    gap: 10px;
+}
+
+div.console > .header > svg {
+    height: 20px;
+    fill: #fff;
+    cursor: pointer;
+}
+
+div.console > .header > svg#toggleConsole {
+    transition: all .5s;
+}
+
+div.console.active > .header > svg#toggleConsole {
+    transform: rotateZ(180deg);
+}
+
+div.console > .body {
+    height: 0px;
+    background-color: #151515;
+    transition: all .3s ease-in-out;
+    position: relative;
+}
+
+div.console.active > .body {
+    height: 500px;
+}
+
+div.console .logs {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 60px;
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-family: monospace;
+}
+
+div.console .logs > * {
+    font-family: monospace;
+}
+
+div.console .logs > .info {
+    background-color: #fff3;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: calc(100% - 20px);
+}
+
+div.console input {
+    font-family: monospace;
+    position: absolute;
+    top: 450px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 0px 10px;
+    color: #ccc;
+}

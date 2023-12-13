@@ -1,5 +1,5 @@
 const Embed = new embed()
-const Proyect = new proyect()
+const Proyect = new Proyect()
 var actualProyectID, actualEmbedID, proyectsData, embedsData
 
 window.onload = async function () {

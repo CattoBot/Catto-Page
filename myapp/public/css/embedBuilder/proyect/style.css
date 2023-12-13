@@ -1,0 +1,12 @@
+div.userbox {
+
+}
+
+div.userbox.visible {
+    visibility: visible;
+}
+
+div.userbox:not(.visible) {
+    visibility: hidden;
+    position: absolute;
+}

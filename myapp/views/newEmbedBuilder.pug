@@ -1,0 +1,256 @@
+doctype html
+
+html
+  head
+    // Etiquetas meta
+    meta(charset='UTF-8')
+    // SEO meta
+    meta(property='og:type' content='website')
+    meta(property='og:type' content='website')
+    meta(property='og:site_name' content='Catto Page')
+    meta(http-equiv='Cache-control' content='no-cache, no-store, must-revalidate')
+    meta(http-equiv='Pragma' content='no-cache')
+    link(rel='icon' type='x-icon' href='media/icon.png')
+    // Ajustes meta
+    meta(property='og:locale' content='es-ES')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    // Hojas de estilo
+    link(rel='stylesheet' href='./css/newEmbedBuilder/style.css')
+    link(rel='stylesheet' href='./css/newEmbedBuilder/loader.css')
+    link(rel='stylesheet' href='./css/newEmbedBuilder/start.css')
+    link(rel='stylesheet' href='./css/newEmbedBuilder/userbox.css')
+    link(rel='stylesheet' href='./css/newEmbedBuilder/noscript.css')
+    link(rel='stylesheet' href='./css/newEmbedBuilder/root.css')
+    // Scripts
+    script(src='./js/newEmbedBuilder/classes/file.js')
+    script(src='./js/newEmbedBuilder/classes/translation.js')
+    script(src='./js/newEmbedBuilder/classes/embed.js')
+    script(src='./js/newEmbedBuilder/classes/page.js')
+    script(src='./js/newEmbedBuilder/classes/proyect.js')
+    script(src='./js/newEmbedBuilder/classes/user.js')
+    script(src='./js/newEmbedBuilder/tools/indexedDB.js')
+    script(src='./js/newEmbedBuilder/tools/dataMg.js')
+    script(src='./js/newEmbedBuilder/tools/loader.js')
+    script(src='./js/newEmbedBuilder/tools/encrypter.js')
+    script(src='./js/newEmbedBuilder/functions.js')
+    script(src='./js/newEmbedBuilder/navigation.js')
+    script(src='./js/newEmbedBuilder/lists.js')
+    script(src='./js/newEmbedBuilder/script.js')
+    // Título
+    title(translation='title')
+  noscript
+    .noscriptDiv
+      div
+        h1 OH NO!
+        h2 Your browser does not allow the use of scripts.
+        p If you want to access the Catto page, enable the use of scripts in your browser.
+  #loadericonarea.active
+    .loader
+      .bar1
+      .bar2
+      .bar3
+      .bar4
+      .bar5
+      .bar6
+      .bar7
+      .bar8
+      .bar9
+      .bar10
+      .bar11
+      .bar12
+    p#loadingText
+
+  .start.visible
+    .title
+      h1 Catto Embed Builder
+      p Seguramente, el mejor constructor de embeds para Discord.
+      .selectlang
+        p Idioma: <span>Español</span>
+        .dropdown
+          .lang
+            img.flag(alt='' src='https://images.emojiterra.com/twitter/512px/1f1ec-1f1e7.png')
+            p English
+          .lang
+            img.flag(alt='' src='https://images.emojiterra.com/twitter/v14.0/256px/1f1ea-1f1f8.png')
+            p Español
+          .lang
+            img.flag(alt='' src='https://images.emojiterra.com/twitter/v14.0/256px/1f1e7-1f1f7.png')
+            p Português
+    .box
+      .templates
+        h2 Plantillas
+        .list.favourite
+          p No hay plantillas favoritas.
+        .list.suggested
+          .box
+            img(alt='' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIPEhUPEhIVFRUVFxcVFRUVFxcVFRUVFRgXFhUVFRUYHSggGBolHRUXITEhJSkrLi4uGB8zODMtNygtLisBCgoKDQ0NDg0NDi0ZFRktKysrKy0rKysrLSstKysrKzc3Lis3KzIrNysrKysrKys3KysrKysrKy0uKzcrMjIrK//AABEIALcBEwMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQMCBwT/xAAeEAEBAAMBAQADAQAAAAAAAAAAAQIR8DFBcYGxIf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9r0mlQBdGgEFARUUEBQQFBBQEsNACCgENACLoARUqgipVAiABsCiAaQFTalB9AArEEBQAQAAUBFAAADYACBQWoqAQAAAACgAoIB39BIKCIKAlFQG4sBWKLvu7/ADu74ACQUAAAAAKAAACKgAAKioAKgAVQRUUEAAlSqAIqCKCUG8CArJFL3d4AAAAAEIAAAAAAAigCLUBUUBFEBagoIaAADYAAgUAKBYDaBiCsgAKEAAAAAAAAAAAAQFqKgKCAKAAACCgIKAIABAQABtiEBWQAAAAAAEAAAoAAAAAFEAURdAAAENAAaAAAQAAFBDQA2x8DDxAZhACAAB3d8AAAAAAAAAAAQAFRQEFIABARQBFAEigCRUgClEBtj4Jh4AzKd3fEBQ7u+gAAAAAEAoKCAAbA2CCgIbUAiKAAkBQAAAAARU/SggpQaYeBh4AzgAAACKAAAAABfyAAAAACAKIAoAENAAAAAAEARUUBFgDvDwMQHECAAQAAAAAAAAAAAAAAAAAAASKAAAigCKAIqKIACu8fAxAZwJ3d6AokAUACAAoIBQUEBQQAAABFAAAAIAAAAAAAAAEAdSiAiQAAAUFAQUBBQEAAFAQAAAAAA0AAoCCgIKAmhQHK7ABNqAbAEf/9k=' draggable='false').cover
+            .text
+              p.title En blanco
+              p.description Una plantilla completamente en blanco para iniciar un nuevo diseño desde cero.
+            .buttons
+              .info
+                <svg viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 15v-6h2v6h-2Zm0-10v2h2V7h-2Z" clip-rule="evenodd"></path>
+                </svg>
+              .go
+                p Empezar
+            .mark
+              svg(fill='none' stroke-linejoin='round' stroke-width='1' viewbox='0 0 24 24')
+                path(d='M12 2.5 8.942 8.739 2 9.746l5.03 4.916L5.826 21.5 12 18.21l6.174 3.29-1.194-6.838L22 9.746l-6.904-1.007L11.999 2.5Z')
+      .fastaccess
+        h2 Acceso rápido
+        .list
+          p Nada por aquí
+  .userbox
+    .menu
+      .navigation
+      .params
+    .embed
+      label#colorLine.lateral
+        input#colorInput(type='color')
+      .embedContent
+        .author
+          label.add.author
+            svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+              path(d='m12.03 5-.018 14')
+              path(d='M5 12h14')
+            p(translation="addAuthor")
+        .principal
+          .text
+            .title
+              span#titleInput.textarea.title(contenteditable='true')
+              label.add.url.vertical
+                svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+                  path(d='m13.12 8.187-4.57-4.57c-1.33-1.33-3.517-1.302-4.884.065C2.299 5.05 2.27 7.236 3.6 8.567l3.968 3.967')
+                  path(d='m16.451 11.502 3.968 3.968c1.33 1.33 1.301 3.517-.065 4.884-1.367 1.367-3.554 1.396-4.885.065l-4.57-4.57')
+                  path(d='M13.055 13.07c1.366-1.366 1.396-3.553.065-4.883')
+                  path(d='M10.9 10.9c-1.368 1.366-1.397 3.553-.066 4.884')
+            span#descriptionInput.textarea.description(contenteditable='true')
+          .thumbnail
+            label.add.thumbnail.vertical
+              svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+                path(d='m12.03 5-.018 14')
+                path(d='M5 12h14')
+              p(translation="addThumbnail")
+        #fields.fields
+        .image
+          button.add
+            svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+              path(d='m12.03 5-.018 14')
+              path(d='M5 12h14')
+            p(translation="addImage")
+        .footer
+          .timestamp
+            button.add
+              svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+                path(d='m12.03 5-.018 14')
+                path(d='M5 12h14')
+          p &bull;
+          .text
+            span#footer-textInput.textarea.text(contenteditable='true')
+    
+    
+    #proyects.proyects.tool.active
+    #pages.pages.tool
+      .type
+        h1#proyectTypeText
+        p#proyectDescriptionText
+      .settings
+        div
+          .custom-select(style='width:100%;')
+            select#selectionlist
+              option(value='0' translation="pageSettingsOption0")
+              option(value='0' translation="pageSettingsOption0")
+              option(value='1' translation="pageSettingsOption1")
+              option(value='2' translation="pageSettingsOption2")
+      #pagesGrid.grid
+        .add.vertical
+          svg(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+            path(d='m12.03 5-.018 14')
+            path(d='M5 12h14')
+          p(translation="newPage")
+    #code.code.tool
+      textarea#codeTextarea(readonly='') {}
+    #new.new.tool
+    #download.download.tool
+    #options.options.tool
+      .section
+        .row
+          .row
+            p(translation="languageTwoDots")
+            .custom-select#selectLang
+              select
+                option(value='1') (es) English
+                option(value='0') (es) Espa&ntilde;ol
+                option(value='1') (en) English
+                option(value='2') (pt) Portugu&ecirc;s
+      .section
+        .row
+          .column
+            p(translation='showCodeFrom')
+            .custom-select
+              select
+                option(value='0' translation='showCodeFromOption0')
+                option(value='0' translation='showCodeFromOption0')
+                option(value='1' translation='showCodeFromOption1')
+                option(value='2' translation='showCodeFromOption2')
+          .column
+            p(translation='modeTwoDots')
+            .custom-select
+              select
+                option(value='0' translation='modeOption0')
+                option(value='0' translation='modeOption0')
+                option(value='1' translation='modeOption1')
+    #credits.credits.tool
+      h1(translation='creditsTitle')
+      h2(translation='creditsDevSubtitle')
+      .cmd.creditslist
+        a(target='_blank' href='https://discord.com/users/249600415040012309') Rain
+        a(target='_blank' href='https://discord.com/users/643575943289634836') gacarbla
+        a(target='_blank' href='https://discord.com/users/655910249965813824') Maniel73
+      h2(translation='creditsPtSubtitle')
+      .creditslist.pt
+        a(target='_blank' href='https://discord.com/users/748998878530895973') im.lu
+      h2(translation='creditsEnSubtitle')
+      .creditslist.en
+        a(target='_blank' href='https://discord.com/users/643575943289634836') gacarbla
+    .navigation
+      #goto-proyects.page.active
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='M16 3h-5v18h5V3Z')
+          path(d='M21 3h-5v18h5V3Z')
+          path(d='m5 3 4 .5L7.25 21 3 20.5 5 3Z')
+          path(d='M18.5 9V7.5')
+          path(d='M13.5 9V7.5')
+      #goto-pages.page
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='M20 16.5V21a1 1 0 0 1-1 1h-3.25')
+          path(d='M20 8V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h3')
+          path(d='M8 8h7')
+          path(d='M11.5 22 20 11.5')
+          path(d='M8 12h4')
+      #goto-download.page
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='m8 6-6 6.216L8 18')
+          path(d='m16 6 6 6.216L16 18')
+          path(d='M12 8.5v7')
+          path(d='m9 12.5 3 3 3-3')
+      #goto-new.page.green
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='m12.03 5-.018 14')
+          path(d='M5 12h14')
+      #goto-code.page
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='M8 2c-1 0-2.5.5-2.5 2.5V9c0 1.5-2.5 2.5-2.5 2.5s2.5 1 2.5 2.5v5.5C5.5 21.5 7 22 8 22')
+          path(d='M16 2c1 0 2.5.5 2.5 2.5V9c0 1.5 2.5 2.5 2.5 2.5s-2.5 1-2.5 2.5v5.5c0 2-1.5 2.5-2.5 2.5')
+      #goto-options.page
+        svg(stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='M22 8a6 6 0 0 1-8.805 5.305L4.5 22 2 19.5l8.695-8.695a6 6 0 0 1 8.11-8.11L15 6.5 17.5 9l3.805-3.805C21.75 6.032 22 6.987 22 8Z')
+      #goto-credits.page
+        svg(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+          path(d='M4 8.506c0-.28.227-.506.506-.506h11.988c.28 0 .506.227.506.506V15.5a6.5 6.5 0 0 1-13 0V8.506Z')
+          path(d='M17 11.5H4v4h13v-4Z')
+          path(d='M10.5 2v3')
+          path(d='M6.5 3v1')
+          path(d='M14.5 3v1')
+          path(d='M17 17a3.5 3.5 0 1 0 0-7')

@@ -1,15 +1,12 @@
-var User, language_cachedValue = language
+var user
 
 window.onload = async () => {
   try {
     await myDB.initDB("database")
     await refreshData()
-    loadNavigation()
-    loadLists()
-    User = new user()
-    await User.load()
+    user = new User()
   } catch (e) {
-    throwError(e, 0)
+    console.error(e)
   } finally {
     loader.disable()
   }

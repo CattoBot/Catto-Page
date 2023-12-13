@@ -1,0 +1,443 @@
+div.start {
+  visibility: hidden;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: var(--start-background);
+  z-index: 800;
+  gap: 20px;
+  min-height: 100vh;
+}
+
+div.start.visible {
+  visibility: visible;
+}
+
+div.start:not(.visible) {
+  visibility: hidden;
+  position: absolute;
+}
+
+div.start > .box {
+  background-color: #0004;
+  padding: 40px;
+  border-radius: 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  overflow-y: scroll;
+}
+
+div.start > .box > hr {
+  color: #fff;
+  width: 100%;
+}
+
+div.start h1, div.start h2, div.start p {
+  margin: 0px;
+}
+
+/* Título */
+div.start > .title {
+  color: #aaa;
+  width: 100%;
+  position: relative;
+}
+
+div.start > .title h1 {
+  font-size: 30px;
+  margin: 0px;
+}
+
+div.start > .title p {
+  font-size: 15px;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+div.start .selectlang {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 175px;
+  max-width: 175px;
+  padding: 5px 0px;
+  height: min-content;
+  background-color: #292929;
+  border-radius: 15px;
+  transition: all .3s;
+  color: #fff
+}
+
+div.start .selectlang:hover {
+  width: 195px;
+  max-width: 195px;
+  right: -10px;
+  padding-bottom: 10px;
+  border-radius: 15px 15px 0px 0px;
+  background-color: #000;
+}
+
+div.start .selectlang > p {
+  color: #fff;
+  font-size: 20px;
+  width: 100%;
+  top: 5px;
+  margin: 0px;
+  text-align: center;
+}
+
+div.start .selectlang > .dropdown {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 35px;
+  background-color: #000;
+  gap: 5px;
+  border-radius: 15px;
+  max-height: 0px;
+  transition: all .3s;
+  overflow-y: scroll;
+}
+
+div.start .selectlang > .dropdown > .lang {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  gap: 5px;
+}
+
+div.start .selectlang > .dropdown > .lang:hover {
+  background-color: #fff2;
+}
+
+div.start .selectlang > .dropdown > .lang img {
+  border-radius: 5px;
+  width: 25px;
+}
+
+
+div.start .selectlang > .dropdown > .lang p {
+  margin: 0;
+  font-size: 18px;
+}
+
+div.start .selectlang:hover > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  max-height: 100px;
+  padding: 10px;  
+  border-radius: 0px 0px 15px 15px;
+}
+
+/* Plantillas */
+div.start .box > div {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  gap: 10px;
+}
+
+div.start div > .list {
+  display: grid;
+  grid-template-columns: 450px 450px 450px;
+  grid-template-rows: 150px auto; 
+  column-gap: 10px;
+  row-gap: 15px;
+  height: fit-content;
+  min-height: 150px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #303030;
+  width: 100%;
+  min-width: 450px;
+  position: relative;
+  gap: 10px;
+  transition: all .3s;
+}
+
+div.start div > .list.hidden {
+  height: 0px;
+  min-height: 0px;
+  overflow: hidden;
+}
+
+div.start div > .list > p {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  opacity: .5;
+  color: #fff;
+}
+
+div.start div > .list > .box {
+  border-radius: 5px;
+  height: 150px;
+  min-height: 150px;
+  width: 450px;
+  min-width: 450px;
+  background-color: #292929;
+  position: relative;
+  flex: 1 1 600px
+}
+
+div.start div > .list > .box > .mark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: all .3s;
+}
+
+div.start div > .list > .box:hover > .mark {
+  opacity: 1;
+  cursor: pointer;
+}
+
+div.start div > .list > .box > .mark > svg {
+  stroke: #fff;
+  height: 25px;
+}
+
+div.start div > .list > .box > .mark:hover > svg {
+  stroke: #ffc400;
+}
+
+div.start div > .list > .box > .mark.marked > svg {
+  stroke: #ffc400;
+  fill: #ffc400;
+  height: 25px;
+}
+
+div.start div > .list > .box > .buttons > .go {
+  border: 2px solid #fff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 30px;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  transition: all .1s;
+  cursor: pointer;
+}
+
+div.start div > .list > .box > .buttons >  .go:hover {
+  background-color: #fff1;
+  box-shadow: 0px 0px 10px #fff3, 0px 0px 5px #fff5;
+}
+
+div.start div > .list > .box > .buttons > .info {
+  border: 2px solid #5865f2;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  position: absolute;
+  right: 160px;
+  bottom: 10px;
+  transition: all .1s;
+  cursor: pointer;
+}
+
+div.start div > .list > .box > .buttons >  .info:hover {
+  background-color: #5865f210;
+  box-shadow: 0px 0px 10px #5865f240, 0px 0px 5px #5865f280;
+}
+
+div.start div > .list > .box > .buttons > .info > svg {
+  fill: #5865f2;
+  height: 25px;
+}
+
+div.start div > .list > .box > .cover {
+  height: 130px;
+  width: 210px;
+  border-radius: 5px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  border: none;
+  outline: none;
+  background-color: #0001;
+}
+
+/*div.start div > .list > .box > .cover:hover {}*/
+
+div.start div > .list > .box > .text > .title {
+  position: absolute;
+  width: 210px;
+  right: 10px;
+  font-size: 14px;
+  top: 10px;
+}
+
+div.start div > .list > .box > .text > .description {
+  position: absolute;
+  width: 210px;
+  right: 10px;
+  top: 30px;
+  font-size: 12px;
+  opacity: .5;
+}
+
+/*div.start .templates > .list.favourite {}*/
+
+/*div.start .templates > .list.suggested {}*/
+
+/* Acceso rápido */
+/*div.start .fastaccess {}*/
+
+/* Ajustes */
+div.settings {
+  display: flex;
+}
+
+div.settings > .s-block {
+  width: calc(100% + 20px);
+  gap: 10px;
+  display: grid;
+  grid-template-areas:
+    'per apa apa'
+    'per acc acc'
+    'inf inf inf';
+}
+
+div.settings > .s-block > * {
+  padding: 30px 15px;
+  border-radius: 15px;
+  background-color: #303030;
+  position: relative;
+  gap: 10px;
+  transition: all .3s;
+  box-sizing: border-box;
+}
+
+.settings .case-logged {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+}
+
+.settings .case-logged > img {
+  border-radius: 50%;
+  height: 70px;
+}
+
+.settings .case-logged > p.user-nickname {
+  font-size: 18px;
+  background-color: transparent;
+  border-radius: 7.5px;
+  padding: 5px 15px;
+  margin-top: 10px;
+}
+
+.settings .case-logged > p.user-nickname:hover {
+  background-color: #292929;
+}
+
+.settings .case-logged > p.user-username {
+  opacity: .5;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 15px;
+}
+
+.settings .case-logged > p.error {
+  margin: 0px;
+  width: 80%;
+  border-radius: 7.5px;
+  padding: 7.5px 0px;
+  background-color: #ed424550;
+  border: 2px solid #ed4245;
+  text-align: center;
+  cursor: help;
+}
+
+.settings .case-logged > .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 5px;
+  padding: 10px 0px;
+}
+
+.settings .case-logged > .buttons > button {
+  flex-grow: 1;
+  flex-basis: 200px;
+  border-radius: 7.5px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  padding: 7.5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.settings .case-logged > .buttons > .switch {
+  border-color: #5865f2;
+  color: #fff;
+  background-color: transparent;
+  transition: all .3s;
+}
+
+.settings .case-logged > .buttons > .switch:hover:not(:disabled) {
+  border-color: #5865f2;
+  color: #fff;
+  background-color: #5865f250;
+}
+
+.settings .case-logged > .buttons > .logout {
+  border-color: #ed4245;
+  color: #fff;
+  background-color: transparent;
+  transition: all .3s;
+}
+
+.settings .case-logged > .buttons > .logout:hover:not(:disabled) {
+  border-color: #ed4245;
+  color: #fff;
+  background-color: #ed424550;
+}
+
+.settings .case-logged > .buttons > .login {
+  border-color: #fff;
+  color: #fff;
+  background-color: transparent;
+  transition: all .3s;
+}
+
+.settings .case-logged > .buttons > .login:hover:not(:disabled) {
+  border-color: #fff;
+  color: #fff;
+  background-color: #ffffff30;
+}
+
+.settings .case-logged > .buttons > button:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.settings .case-logged.hidden {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+}

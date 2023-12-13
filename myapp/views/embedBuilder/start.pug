@@ -1,0 +1,141 @@
+doctype html
+
+html
+  head
+    // Etiquetas meta
+    meta(charset='UTF-8')
+    // SEO meta
+    meta(property='og:type' content='website')
+    meta(property='og:type' content='website')
+    meta(property='og:site_name' content='Catto Page')
+    meta(http-equiv='Cache-control' content='no-cache, no-store, must-revalidate')
+    meta(http-equiv='Pragma' content='no-cache')
+    link(rel='icon' type='x-icon' href='media/icon.png')
+    // Ajustes meta
+    meta(property='og:locale' content='es-ES')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    // Hojas de estilo
+    link(rel='stylesheet' href='./css/embedBuilder/style.css')
+    link(rel='stylesheet' href='./css/embedBuilder/loader.css')
+    link(rel='stylesheet' href='./css/embedBuilder/start/style.css')
+    link(rel='stylesheet' href='./css/embedBuilder/noscript.css')
+    link(rel='stylesheet' href='./css/embedBuilder/root.css')
+    link(rel='stylesheet' href='./css/embedBuilder/console.css')
+    // Scripts
+    script(src='./js/embedBuilder/tools/dataMg.js')
+    script(src='./js/embedBuilder/tools/indexedDB.js')
+    script(src='./js/embedBuilder/tools/loader.js')
+    script(src='./js/embedBuilder/tools/functions.js')
+    script(src='./js/embedBuilder/tools/validation.js')
+
+    script(src='./js/embedBuilder/classes/console.js')
+    script(src='./js/embedBuilder/classes/user.js')
+    script(src='./js/embedBuilder/classes/proyect.js')
+    script(src='./js/embedBuilder/classes/page.js')
+    script(src='./js/embedBuilder/classes/embed.js')
+    script(src='./js/embedBuilder/classes/encrypter.js')
+    script(src='./js/embedBuilder/classes/file.js')
+    script(src='./js/embedBuilder/classes/translation.js')
+
+    script(src='./js/embedBuilder/start/script.js')
+    // Título
+    title(translation='title')
+  noscript
+    .noscriptDiv
+      div
+        h1 OH NO!
+        h2 Your browser does not allow the use of scripts.
+        p If you want to access the Catto page, enable the use of scripts in your browser.
+  #loadericonarea.active
+    .loader
+      .bar1
+      .bar2
+      .bar3
+      .bar4
+      .bar5
+      .bar6
+      .bar7
+      .bar8
+      .bar9
+      .bar10
+      .bar11
+      .bar12
+    p#loadingText
+
+  .console.hidden#console
+    .header
+      svg#toggleConsole(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+        path(d='m19.406 15.094-6.552-7.647a1.125 1.125 0 0 0-1.709 0l-6.552 7.647c-.625.73-.107 1.857.854 1.857h13.107c.96 0 1.479-1.128.852-1.857Z')
+      svg#closeConsole(viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg')
+        path(d='m13.59 12.002 4.454-4.453a1.126 1.126 0 0 0-1.59-1.594L12 10.408 7.547 5.955A1.127 1.127 0 1 0 5.953 7.55l4.453 4.453-4.453 4.453a1.127 1.127 0 1 0 1.594 1.594L12 13.596l4.453 4.453a1.127 1.127 0 1 0 1.594-1.594l-4.456-4.453Z')
+    .body
+      .logged
+      .input
+        .logs#consoleLogs
+        input(type="text" placeholder="> ..." spellcheck="false")
+
+  .start.visible
+    .title
+      h1 Catto Embed Builder
+      p Seguramente, el mejor constructor de embeds para Discord.
+      .selectlang
+        p Idioma: <span>Español</span>
+        .dropdown
+          .lang
+            img.flag(alt='' src='./images/flags/en_uk.png')
+            p English
+          .lang
+            img.flag(alt='' src='./images/flags/es_es.png')
+            p Español
+          .lang
+            img.flag(alt='' src='./images/flags/pt_br.png')
+            p Português
+    .box
+      .templates
+        h2 Plantillas
+        .list.favourite.hidden
+          p No hay plantillas favoritas.
+        .list.suggested
+          .box
+            img(alt='' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIPEhUPEhIVFRUVFxcVFRUVFxcVFRUVFRgXFhUVFRUYHSggGBolHRUXITEhJSkrLi4uGB8zODMtNygtLisBCgoKDQ0NDg0NDi0ZFRktKysrKy0rKysrLSstKysrKzc3Lis3KzIrNysrKysrKys3KysrKysrKy0uKzcrMjIrK//AABEIALcBEwMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQMCBwT/xAAeEAEBAAMBAQADAQAAAAAAAAAAAQIR8DFBcYGxIf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9r0mlQBdGgEFARUUEBQQFBBQEsNACCgENACLoARUqgipVAiABsCiAaQFTalB9AArEEBQAQAAUBFAAADYACBQWoqAQAAAACgAoIB39BIKCIKAlFQG4sBWKLvu7/ADu74ACQUAAAAAKAAACKgAAKioAKgAVQRUUEAAlSqAIqCKCUG8CArJFL3d4AAAAAEIAAAAAAAigCLUBUUBFEBagoIaAADYAAgUAKBYDaBiCsgAKEAAAAAAAAAAAAQFqKgKCAKAAACCgIKAIABAQABtiEBWQAAAAAAEAAAoAAAAAFEAURdAAAENAAaAAAQAAFBDQA2x8DDxAZhACAAB3d8AAAAAAAAAAAQAFRQEFIABARQBFAEigCRUgClEBtj4Jh4AzKd3fEBQ7u+gAAAAAEAoKCAAbA2CCgIbUAiKAAkBQAAAAARU/SggpQaYeBh4AzgAAACKAAAAABfyAAAAACAKIAoAENAAAAAAEARUUBFgDvDwMQHECAAQAAAAAAAAAAAAAAAAAAASKAAAigCKAIqKIACu8fAxAZwJ3d6AokAUACAAoIBQUEBQQAAABFAAAAIAAAAAAAAAEAdSiAiQAAAUFAQUBBQEAAFAQAAAAAA0AAoCCgIKAmhQHK7ABNqAbAEf/9k=' draggable='false').cover
+            .text
+              p.title En blanco
+              p.description Una plantilla completamente en blanco para iniciar un nuevo diseño desde cero.
+            .buttons
+              .info
+                <svg viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 15v-6h2v6h-2Zm0-10v2h2V7h-2Z" clip-rule="evenodd"></path>
+                </svg>
+              .go
+                p Empezar
+            .mark
+              svg(fill='none' stroke-linejoin='round' stroke-width='1' viewbox='0 0 24 24')
+                path(d='M12 2.5 8.942 8.739 2 9.746l5.03 4.916L5.826 21.5 12 18.21l6.174 3.29-1.194-6.838L22 9.746l-6.904-1.007L11.999 2.5Z')
+      .fastaccess
+        h2 Acceso rápido
+        .list.hidden
+          p Nada por aquí
+      .settings
+        h2 Ajustes
+        .s-block
+          .s-box.account(style="grid-area: per;")
+            .box-content
+              .case-logged
+                img.user-pfp(alt="" src="https://assets.mofoprod.net/network/images/discord.original.jpg")
+                p.user-nickname ɢᴀвѕ
+                p.user-username gacarbla
+                p.error(title="Es necesario volver a iniciar sesión para utilizar este usuario") La sesión ha caducado
+                .buttons
+                  button.switch(disabled) Cambiar de usuario
+                  button.logout(disabled hidden) Cerrar sesión
+                  button.login() Iniciar sesión
+              .case-login.hidden
+          .s-box(style="grid-area: apa;")
+            p.title Apariencia
+            .box-content
+          .s-box(style="grid-area: acc;")
+            p.title Accesibilidad
+            .box-content
+          .s-box(style="grid-area: inf;")
+            p.title Información
+            .box-content
