@@ -84,12 +84,24 @@ html
           .lang
             img.flag(alt='' src='./images/flags/en_uk.png')
             p English
+          .lang.disabled
+            img.flag(alt='' src='./images/flags/zh_cn.png')
+            p Chino
+          .lang.disabled
+            img.flag(alt='' src='./images/flags/hi_in.png')
+            p Hindi
           .lang
             img.flag(alt='' src='./images/flags/es_es.png')
             p Español
           .lang#langLatamSpanish
             img.flag#flagLatamSpanish(alt='' src='./images/flags/es_mx.png')
             p Español latino
+          .lang.disabled
+            img.flag(alt='' src='./images/flags/fr_fr.png')
+            p Francés
+          .lang.disabled
+            img.flag(alt='' src='./images/flags/ru_ru.png')
+            p Ruso
           .lang
             img.flag(alt='' src='./images/flags/pt_br.png')
             p Português
@@ -127,7 +139,7 @@ html
                 img.user-pfp(alt="" src="https://assets.mofoprod.net/network/images/discord.original.jpg")
                 p.user-nickname ɢᴀвѕ
                 p.user-username gacarbla
-                p.error(title="Es necesario volver a iniciar sesión para utilizar este usuario") La sesión ha caducado
+                p.error La sesión ha caducado
                 .buttons
                   button.switch(disabled) Cambiar de usuario
                   button.logout(disabled hidden) Cerrar sesión
