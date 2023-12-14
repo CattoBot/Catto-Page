@@ -39,7 +39,7 @@ html
 
     script(src='./js/embedBuilder/start/script.js')
     // Título
-    title(translation='title')
+    title Catto Coffee &middot; Embed Builder
   noscript
     .noscriptDiv
       div
@@ -76,8 +76,8 @@ html
 
   .start.visible
     .title
-      h1 Catto Embed Builder
-      p Seguramente, el mejor constructor de embeds para Discord.
+      h1(translation='pageTitle') Catto Embed Builder
+      p(translation='pageSubtitle') Seguramente, el mejor constructor de embeds para Discord.
       .selectlang
         p Idioma: <span>Español</span>
         .dropdown
@@ -107,9 +107,9 @@ html
             p Português
     .box
       .templates
-        h2 Plantillas
+        h2(translation='templates') Plantillas
         .list.favourite.hidden
-          p No hay plantillas favoritas.
+          p(translation='noFavTemplates') No hay plantillas favoritas.
         .list.suggested
           .box
             img(alt='' src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIPEhUPEhIVFRUVFxcVFRUVFxcVFRUVFRgXFhUVFRUYHSggGBolHRUXITEhJSkrLi4uGB8zODMtNygtLisBCgoKDQ0NDg0NDi0ZFRktKysrKy0rKysrLSstKysrKzc3Lis3KzIrNysrKysrKys3KysrKysrKy0uKzcrMjIrK//AABEIALcBEwMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQMCBwT/xAAeEAEBAAMBAQADAQAAAAAAAAAAAQIR8DFBcYGxIf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9r0mlQBdGgEFARUUEBQQFBBQEsNACCgENACLoARUqgipVAiABsCiAaQFTalB9AArEEBQAQAAUBFAAADYACBQWoqAQAAAACgAoIB39BIKCIKAlFQG4sBWKLvu7/ADu74ACQUAAAAAKAAACKgAAKioAKgAVQRUUEAAlSqAIqCKCUG8CArJFL3d4AAAAAEIAAAAAAAigCLUBUUBFEBagoIaAADYAAgUAKBYDaBiCsgAKEAAAAAAAAAAAAQFqKgKCAKAAACCgIKAIABAQABtiEBWQAAAAAAEAAAoAAAAAFEAURdAAAENAAaAAAQAAFBDQA2x8DDxAZhACAAB3d8AAAAAAAAAAAQAFRQEFIABARQBFAEigCRUgClEBtj4Jh4AzKd3fEBQ7u+gAAAAAEAoKCAAbA2CCgIbUAiKAAkBQAAAAARU/SggpQaYeBh4AzgAAACKAAAAABfyAAAAACAKIAoAENAAAAAAEARUUBFgDvDwMQHECAAQAAAAAAAAAAAAAAAAAAASKAAAigCKAIqKIACu8fAxAZwJ3d6AokAUACAAoIBQUEBQQAAABFAAAAIAAAAAAAAAEAdSiAiQAAAUFAQUBBQEAAFAQAAAAAA0AAoCCgIKAmhQHK7ABNqAbAEf/9k=' draggable='false').cover
@@ -122,16 +122,16 @@ html
                   <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 15v-6h2v6h-2Zm0-10v2h2V7h-2Z" clip-rule="evenodd"></path>
                 </svg>
               .go
-                p Empezar
+                p(translation='start') Empezar
             .mark
               svg(fill='none' stroke-linejoin='round' stroke-width='1' viewbox='0 0 24 24')
                 path(d='M12 2.5 8.942 8.739 2 9.746l5.03 4.916L5.826 21.5 12 18.21l6.174 3.29-1.194-6.838L22 9.746l-6.904-1.007L11.999 2.5Z')
       .fastaccess
-        h2 Acceso rápido
+        h2(translation='fastAccess') Acceso rápido
         .list.hidden
-          p Nada por aquí
+          p(translation='nothing') Nada por aquí
       .settings
-        h2 Ajustes
+        h2(translation='settings') Ajustes
         .s-block
           .s-box.account(style="grid-area: per;")
             .box-content
@@ -141,16 +141,16 @@ html
                 p.user-username gacarbla
                 p.error La sesión ha caducado
                 .buttons
-                  button.switch(disabled) Cambiar de usuario
-                  button.logout(disabled hidden) Cerrar sesión
-                  button.login() Iniciar sesión
+                  button.switch(disabled translation='switchAccount') Cambiar de usuario
+                  button.logout(disabled hidden translation='logout') Cerrar sesión
+                  button.login(translation='login') Iniciar sesión
               .case-login.hidden
           .s-box(style="grid-area: apa;")
-            p.title Apariencia
+            p.title(translation='appearance') Apariencia
             .box-content
           .s-box(style="grid-area: acc;")
-            p.title Accesibilidad
+            p.title(translation='accesibility') Accesibilidad
             .box-content
           .s-box(style="grid-area: inf;")
-            p.title Información
+            p.title(translation='info') Información
             .box-content
