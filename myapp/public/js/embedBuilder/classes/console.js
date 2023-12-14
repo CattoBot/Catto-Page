@@ -11,8 +11,8 @@
  * > ```js
  * class Console {
  *   permissions: {
- *     user: object
- *     admin: object
+ *     ...
+ *     check(): boolean
  *   }
  * }
  * > ```
@@ -21,7 +21,7 @@
 
 class Console {
 
-    admin = {
+    #admin = {
         enabled: false
     }
 
@@ -33,7 +33,7 @@ class Console {
      * 
      * @example mode = 1
      */
-    mode = 0
+    #mode = 0
 
     /**
      * 
@@ -68,7 +68,7 @@ class Console {
      * introducido en la consola interna de la página.
      * 
      * @param {string} text Texto introducido en la consola
-     * @returns void
+     * @returns {void}
      * @example input("user/login"): void
      */
     input(text) {
@@ -76,20 +76,26 @@ class Console {
     }
 
     /**
-     * @description En este objeto encontrarás un objeto individual para cada comando. En él, una
-     * función `run(prefix, args)` es la ejecutada cuando el usuario hace uso del comando.
+     * @description En este array encontrarás un objeto individual para cada comando. En él, una
+     * función `run(prefix, args)` es la ejecutada cuando el usuario hace uso del comando, una
+     * constante `name` que denomina el nombre de dicho comando, una constante `alias` con un array
+     * que contiene todos los alias del comando y una constante `perms` con los permisos necesarios
+     * para poder ejecutar el comando.
      */
-    execute = {
-        list: {
+    execute = [
+        {
+            name: "list",
+            alias: ["list", "lista"],
             /**
              * @param {string} prefix 
              * @param {string[]} args 
+             * @return {boolean}
              */
             run(prefix, args) {
 
             }
         }
-    }
+    ]
 
     /**
      * @description Prefijo que se debe introducir antes de ejecutar un comando.
@@ -119,24 +125,77 @@ class Console {
     }
 
     /**
-     * @description Objeto con los permisos necesarios para cada comando o grupo de comandos. Incluye
-     * la función "check" para comprobar de forma rápida si dispone de permisos
-     * suficientes.
+     * Lista de permisos disponibles para los usuarios.
      * 
-     * Aquellos comandos cuyos permisos no están registrados, su nivel de permisos es por
-     * defecto `0x0`.
-     * 
-     * -----
-     * 
-     * @example Console.permissions.admin._ = 0x1
+     * No tener permisos equivale a tener permiso `0x0`.
      */
     static permissions = {
-        user: {
-            _: 0x0
-        },
-        admin: {
-            _: 0x1
-        },
+
+        /**
+         * Todos los permisos
+         */
+        admin: 0x0001,
+
+        /**
+         * Gestionar los permisos que tiene un usuario
+         */
+        manage_permissions: 0x0002,
+
+        /**
+         * Gestionar y modificar el contenido de la página
+         */
+        manage_page: 0x0004,
+
+        /**
+         * Utilizar funciones de JavaScript de la página
+         */
+        javascript_functions: 0x0008,
+
+        /**
+         * Utilizar funciones nativas de JavaScript
+         */
+        javascript: 0x0010,
+
+        /**
+         * Gestionar todos los aspectos de la sesión
+         */
+        manage_session: 0x0020,
+
+        /**
+         * Iniciar sesión
+         */
+        login: 0x0040,
+
+        /**
+         * Cerrar sesión
+         */
+        logout: 0x0080,
+
+        /**
+         * Alternar entre cuentas
+         */
+        switch: 0x0100,
+
+        /**
+         * Leer logs
+         */
+        read: 0x0200,
+
+        /**
+         * Guardar el historial de mensajes de la consola
+         */
+        history: 0x0400,
+
+        /**
+         * Compartir el historial de mensajes de la consola
+         */
+        share: 0x0800,
+
+        /**
+         * Escribir en la consola
+         */
+        write: 0x1000,
+
         /**
          * @description Con esta función comprobaremos si ciertos permisos serían suficientes para
          * satisfacer otro.
@@ -149,7 +208,7 @@ class Console {
          * 
          * @param {integer} a Nivel de permisos del usuario
          * @param {integer} b Nivel de permisos requerido
-         * @returns boolean (El nivel de permisos del usuario incluye el permiso especificado)
+         * @returns {boolean} boolean (El nivel de permisos del usuario incluye el permiso especificado)
          * @example check(5, 1<<2): true
          */
         check(a, b) {
