@@ -157,7 +157,6 @@ class User {
         document.getElementById("toggleConsole").addEventListener("click", function(){
             document.getElementById("console").classList.toggle("active")
         })
-        document.getElementById("consoleLogs").innerHTML = `<div class="info">-----------------------------<br>Welcome to the Catto Console!<br>-----------------------------</div>`
         document.getElementById("closeConsole").addEventListener("click", function(){
             user.configuration.devMode = false
             data.establecer("devMode", false)

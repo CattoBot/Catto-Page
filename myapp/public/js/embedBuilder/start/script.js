@@ -5,7 +5,7 @@ window.onload = async () => {
     await myDB.initDB("database")
     await refreshData()
     user = new User()
-
+    randomFlag()
     document.getElementById("langLatamSpanish").addEventListener("mouseenter", randomFlag)
   } catch (e) {
     console.error(e)
