@@ -1,0 +1,94 @@
+@import url('https://fonts.cdnfonts.com/css/whitney-2');
+
+:root {
+    --discord-background: #313338;
+    --embed-background: #2b2d31;
+    --link-text-color: #00a8ef;
+    --message-hover: #32353b;
+
+    --primary-button: #5468ff;
+    --primary-button-hover: #4752c4;
+    --secondary-button: #4f545c;
+    --secondary-button-hover: #474c53;
+    --success-button-hover: #359553;
+    --success-button: #3ba55c;
+    --danger-button: #ed4245;
+    --danger-button-hover: #d53b3e;
+    --link-button: #4f545c;
+    --link-button-hover: #474c53;
+
+    --scrollbar: #1a1b1e;
+    --scrollbar-track: #2b2d31;
+
+    --start-background: #383838;
+    --start-background-onhover: #454545;
+}
+
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -moz-window-dragging: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    font-family: whitney, Arial;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #0000;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar);
+}
+
+body {
+    margin: 0px;
+    background-color: var(--discord-background);
+}
+
+.window {
+    width: 80vw;
+    position: relative;
+    left: 10vw;
+    top: 100px;
+    color: #fff;
+    background-color: var(--embed-background);
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    border-radius: 25px;
+    filter: drop-shadow(0px 0px 20px #0002) drop-shadow(0px 0px 5px #0006);
+    gap: 15px;
+}
+
+.window > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.window > .code > p {
+    font-size: 150px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.window > .message > p {
+    font-size: 20px;
+    margin: 0px;
+}
