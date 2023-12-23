@@ -206,26 +206,45 @@ class CattoFile {
      * esto.
      */
     download() {
-        if (typeof this.#_name != "string" || this.#_name.length == 0) throw new Error("Invalid text")
-        if (typeof this.#_content != "string" || this.#_content.length == 0) throw new Error("Invalid text")
-        if (typeof this.#_extension != "string" || this.#_extension.length == 0) throw new Error("Invalid text")
-        var content = this.#_content
-        if (this.#_extension == ".json") {
-            try {
-                JSON.parse(this.#_content);
-            } catch {
-                throw new Error("Invalid JSON")
+        console.groupCollapsed("#️⃣ Descarga de archivo")
+        try {
+            if (typeof this.#_name != "string" || this.#_name.length == 0) throw new Error("Invalid text")
+            if (typeof this.#_content != "string" || this.#_content.length == 0) throw new Error("Invalid text")
+            if (typeof this.#_extension != "string" || this.#_extension.length == 0) throw new Error("Invalid text")
+            console.log("✅ Validados los campos requeridos")
+            var content = this.#_content
+            if (this.#_extension == ".json") {
+                try {
+                    JSON.parse(this.#_content);
+                    console.log("✅ Conversión a JSON exitosa")
+                } catch {
+                    throw new Error("Invalid JSON")
+                }
             }
+            if (this.#_encrypted) {
+                const crp = new Encryption("catto", 69)
+                content = crp.encrypt(content, "text")
+                console.log("✅ Contenido encriptado")
+            }
+            const file = new File([content], `${this.#_name}${this.#_extension}`, { type: this.#_type })
+            console.log("✅ Archivo creado")
+            const link = document.createElement('a')
+            const url = URL.createObjectURL(file)
+            console.log("✅ URL de descarga creada")
+            link.href = url
+            link.download = file.name
+            document.body.appendChild(link)
+            link.click()
+            console.log("✅ Iniciando descarga")
+            document.body.removeChild(link)
+            window.URL.revokeObjectURL(url)
+            console.log("✅ URL de descarga eliminada")
+        } catch (e) {
+            console.groupCollapsed("❌ No se ha podido descargar el archivo")
+            console.error(e)
+            console.groupEnd()
+        } finally {
+            console.groupEnd()
         }
-        if (this.#_encrypted) content = encrypt(content, "catto", 69, "text", "text", "encrypt")
-        const file = new File([content], `${this.#_name}${this.#_extension}`, { type: this.#_type })
-        const link = document.createElement('a')
-        const url = URL.createObjectURL(file)
-        link.href = url
-        link.download = file.name
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-        window.URL.revokeObjectURL(url)
     }
 }

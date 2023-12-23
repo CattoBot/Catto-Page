@@ -57,12 +57,12 @@ class User {
         /**
          * @description ¿Está el modo desarrollador activado?
          */
-        devMode: data.obtener("devMode")=="true" || false,
-        
+        devMode: data.obtener("devMode") == "true" || false,
+
         /**
          * @description ¿Puede el usuario abrir el menú contextual de click derecho?
          */
-        rightClick: data.obtener("rightClick")=="true" || false,
+        rightClick: data.obtener("rightClick") == "true" || false,
 
         /**
          * @description Consola del usuario
@@ -124,12 +124,20 @@ class User {
      * > ```
      */
     constructor() {
-
-        new CattoFile()
-        this.configuration.translation = new Translation(this.configuration.language)
-        this.keyDown()
-        this.console()
-        document.oncontextmenu = this.rightClick;
+        console.groupCollapsed("#️⃣ Creando usuario")
+        try {
+            this.configuration.translation = new Translation(this.configuration.language)
+            this.keyDown()
+            this.console()
+            document.oncontextmenu = this.rightClick;
+            console.log("✅ Usuario creado correctamente")
+        } catch (e) {
+            console.groupCollapsed("❌ No ha sido posible crear el usuario correctamente")
+            console.error(e)
+            console.groupEnd()
+        } finally {
+            console.groupEnd()
+        }
     }
 
     /**
@@ -142,6 +150,7 @@ class User {
      */
     rightClick() {
         if (!user || !user.configuration.rightClick || !user.configuration.devMode) {
+            console.log("❌ Permiso de click derecho denegado")
             return false
         }
     }
@@ -154,18 +163,48 @@ class User {
      * correspondientes botones de la parte superior derecha.
      */
     console() {
-        document.getElementById("toggleConsole").addEventListener("click", function(){
-            document.getElementById("console").classList.toggle("active")
-        })
-        document.getElementById("closeConsole").addEventListener("click", function(){
-            user.configuration.devMode = false
-            data.establecer("devMode", false)
-            alert("Modo desarrollador deshabilitado")
-        })
-        setInterval(function(){
-            if (user.configuration.devMode) document.getElementById("console").classList.toggle("hidden", false)
-            else document.getElementById("console").classList.toggle("hidden", true)
-        }, 250)
+        console.groupCollapsed("#️⃣ Configuración de consola")
+        try {
+            try {
+                document.getElementById("toggleConsole").addEventListener("click", function () {
+                    document.getElementById("console").classList.toggle("active")
+                })
+                console.log("✅ \"toggleConsole\" ha sido configurado exitosamente")
+            } catch (e) {
+                console.groupCollapsed("❌ No ha sido posible configurar \"toggleConsole\"")
+                console.error(e)
+                console.groupEnd()
+            }
+            try {
+                document.getElementById("closeConsole").addEventListener("click", function () {
+                    user.configuration.devMode = false
+                    data.establecer("devMode", false)
+                    alert("Modo desarrollador deshabilitado")
+                })
+                console.log("✅ \"closeConsole\" ha sido configurado exitosamente")
+            } catch (e) {
+                console.groupCollapsed("❌ No ha sido posible configurar \"closeConsole\"")
+                console.error(e)
+                console.groupEnd()
+            }
+            try {
+                setInterval(function () {
+                    if (user.configuration.devMode) document.getElementById("console").classList.toggle("hidden", false)
+                    else document.getElementById("console").classList.toggle("hidden", true)
+                }, 250)
+                console.log("✅ Detector de cambios de estado en el modo desarrollador iniciado")
+            } catch (e) {
+                console.groupCollapsed("❌ No ha sido posible iniciar el detector de cambio de estado del modo desarrollador")
+                console.error(e)
+                console.groupEnd()
+            }
+        } catch (e) {
+            console.groupCollapsed("❌ No ha sido posible configurar la consola")
+            console.error(e)
+            console.groupEnd()
+        } finally {
+            console.groupEnd()
+        }
     }
 
     /**
@@ -178,7 +217,7 @@ class User {
      * desarrollador.
      */
     static KEY_UNLOCK_DEV = ["up", "up", "up", "up", "up", "right", "left", "down", "up", "up"]
-    
+
     /**
      * Esta función inicia el listener que comprueba una a una todas las
      * pulsaciones realizadas por el usuario.
@@ -188,21 +227,33 @@ class User {
      * de ellas, la característica asociada es activada.
      */
     keyDown() {
-        document.addEventListener('keydown', (event) => {
-            User.keys.push(`${event.key.toLowerCase().replace("arrow", "")}`)
-            if (User.keys.length > 10) User.keys.shift()
-            if (User.keys.join() == User.KEY_UNLOCK_DEV.join()) {
-                User.keys = []
-                if (this.configuration.devMode) {
-                    this.configuration.devMode = false
-                    data.establecer("devMode", false)
-                    alert("Modo desarrollador deshabilitado")
-                } else {
-                    this.configuration.devMode = true
-                    data.establecer("devMode", true)
-                    alert("Modo desarrollador habilitado")
+        console.groupCollapsed("#️⃣ Listener de tecla presionada")
+        try {
+            document.addEventListener('keydown', (event) => {
+                User.keys.push(`${event.key.toLowerCase().replace("arrow", "")}`)
+                if (User.keys.length > 10) User.keys.shift()
+                if (User.keys.join() == User.KEY_UNLOCK_DEV.join()) {
+                    console.groupCollapsed("#️⃣ Patrón de pulsaciones reconocido")
+                    User.keys = []
+                    if (this.configuration.devMode) {
+                        this.configuration.devMode = false
+                        data.establecer("devMode", false)
+                        console.info("Modo desarrollador desactivado")
+                    } else {
+                        this.configuration.devMode = true
+                        data.establecer("devMode", true)
+                        console.info("Modo desarrollador activado")
+                    }
+                    console.groupEnd()
                 }
-            }
-        }, false);
+            }, false);
+            console.log("✅ Listener iniciado correctamente")
+        } catch (e) {
+            console.groupCollapsed("❌ No ha sido posible iniciar el listener")
+            console.error(e)
+            console.groupEnd()
+        } finally {
+            console.groupEnd()
+        }
     }
 }

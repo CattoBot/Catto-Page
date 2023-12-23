@@ -212,7 +212,17 @@ class Console {
          * @example check(5, 1<<2): true
          */
         check(a, b) {
-            return (a & b) == b
+            console.groupCollapsed("#️⃣ Comprobación de permisos")
+            console.log("*️⃣ Nivel dispuesto: ", a)
+            console.log("*️⃣ Nivel requerido: ", b)
+            let result = (a&b)==b
+            if (result) {
+                console.log("*️✅ ¡Permiso compatible!")
+            } else {
+                console.log("*️❌ ¡Permiso incompatible!")
+            }
+            console.groupEnd()
+            return result
         }
     }
 }
